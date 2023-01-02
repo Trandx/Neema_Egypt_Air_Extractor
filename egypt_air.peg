@@ -1,0 +1,1138 @@
+	//Name: EGYPT Air
+	//New Keys: egyptair
+	//Date: 27/12/2022  
+
+					//********globals functions********************
+					{
+
+					/// regex declaration ///
+
+					const _regex_ticket_number = /Ticket number:\s*(\d{3}\s\d{10})\s-\s(\d*)/im
+
+					const _regex_traveler_name = /Passenger:\s*(.+\))/im
+
+					const _regex_pnr = /Booking ref:\s*(\w+)/i
+
+					const _regex_issuing_date = /Date:\s*(\w+)/i
+
+					const _regex_total_price = /Total Amount:.+\:\s(.+)/img
+
+					const _regex_equipment = /Baggage:\s*(\w+)/i
+
+					const _regex_number_stop = /Number of stops:\s*(\w+)/i
+
+					const _regex_terminal = /Terminal:\s*(\w+)/img
+
+					const _regex_duration = /Duration:\s*(\d+:\d+)/i
+
+					const _regex_class = /Class:\s*(\w)/i
+
+					const _regex_status = /Booking status:\s*(\w+)/i
+
+					const _regex_form_of_payement = /Form of payment:\s*(\w+)/i
+
+					//const _regex_fare_calculation =  
+
+					// end Declaration
+
+					var toObject=function (KEY,tab){
+						var v={};
+						if (tab && tab.forEach){
+						  tab.forEach(function(t){
+									  if(t && typeof t =='object'){
+										 for (prop in t)
+								   v[prop]=t[prop];
+									  }
+						  });
+						 }
+						 var ret={}
+						 ret[KEY]=v
+					   return  ret;
+					  }
+
+					// Destination city extraction
+					var GetDestination = function (tab){
+
+						if(tab.length == 0) return "";
+						if(tab.length == 1) return tab[0];
+						if(tab.length > 1) return tab[1];
+						/*var i = 0,j = 1;
+						var d = tab[i];
+						i++;
+						while (i<= tab.length-1){
+							var str = tab.slice(0,j);
+							if (tabExist(str,tab[i])) return d;
+							d = tab[i];
+							j++; i++
+						}*/
+						return d;
+					}
+
+					// Evaluate RegEx
+
+					var matchRe = function (re,str,index){
+
+							 var rer=str.match(re)
+							 console.log(rer)
+					return (rer==null ||rer==undefined)?"":""+rer[index]
+					}
+					var fop = [""], fopref = [""];
+					var NBTKTSEG = 0, totalfarenet =[0], totalfee=0;
+					
+					// Convert Date format ddMMM to yyyy-mm-dd
+					var ConvertDate = function(dat,yr){
+						var  month=matchRe(/\d\d\s*(\w{3})/i,dat,1).trim();
+						//alert('month='+month)
+						switch(month.toUpperCase()){
+							case "JAN":month="00";			   break;
+							case "FEB":month="01";				   break;
+							case "MAR":month="02";				   break;
+							case "APR":month="03";				   break;
+							case "MAY":month="04";				   break;
+							case "JUN":month="05";				   break;
+							case "JUL":month="06";				   break;
+							case "AUG":month="07";				   break;
+							case "SEP":month="08";				   break;
+							case "OCT":month="09";				   break;
+							case "NOV":month="10";				   break;
+							case "DEC":month="11";				   break;
+							default:   month="" ;				   break;
+						}
+						var day = matchRe(/(\d\d)\s*\w{3}/i,dat,1).trim();
+						dat = yr+"-"+(parseFloat(month)+1)+"-"+day;
+						return dat
+						
+					}
+
+					}
+					//
+
+					//**********************************
+
+					START= HEADER_VALUE
+
+					//*********** globals
+					ANY=.
+					ANY_2=$(ANY? ANY?)
+					ANY_3=$(ANY? ANY? ANY?)
+					ANY_4=$(ANY_2 ANY_2)
+					ANY_8=$(ANY_4 ANY_4)
+					ANY_12=$(ANY_8 ANY_4)
+					ANY_14=$(ANY_8 ANY_4 ANY_2)
+					ANY_20=$(ANY_12 ANY_8)
+					ANY_25=$(ANY_12 ANY_8 ANY_4 ANY?)
+					ANY_28=$(ANY_14 ANY_14)
+					ANY_30=$(ANY_28 ANY_2)
+					ANY_40=$(ANY_28 ANY_12)
+					ANY_50= $(ANY_28 ANY_28 ANY_2)
+					ANY_98=$(ANY_28 ANY_28 ANY_28 ANY_14)
+					ANY_99=$(ANY? ANY_28 ANY_28 ANY_28 ANY_14)
+					ANY_100=$(ANY? ANY_99)
+					ANY_150=$(ANY_99 ANY? ANY_50)
+					ANY_200=$(ANY_150 ANY_50)
+					ANY_250=$(ANY_200 ANY_50)
+					ANY_300=$(ANY_250 ANY_50)
+					ANY_350=$(ANY_300 ANY_50)
+					ANY_400=$(ANY_350 ANY_50)
+					ANY_450=$(ANY_400 ANY_50)
+					ANY_500=$(ANY_450 ANY_50)
+					ANY_550=$(ANY_500 ANY_50)
+					ANY_600=$(ANY_550 ANY_50)
+					ANY_650=$(ANY_600 ANY_50)
+					ANY_700=$(ANY_650 ANY_50)
+					ANY_750=$(ANY_700 ANY_50)
+					ANY_800= $(ANY_750 ANY_50)
+					ANY_850= $(ANY_800 ANY_50)
+					ANY_884= $(ANY_800 ANY_50 ANY_25 ANY_8 ANY?)
+					ANY_900= $(ANY_850 ANY_50)
+					ANY_950= $(ANY_900 ANY_50)
+					ANY_1000= $(ANY_950 ANY_50)
+					ANY_1500= $(ANY_950 ANY_50 ANY_500)
+					ANY_2000= $(ANY_1000 ANY_1000)
+					ANY_2100= $(ANY_1000 ANY_1000 ANY_100)
+					ANY_3000= $(ANY_2000 ANY_1000)
+					ANY_15000= $(ANY_3000 ANY_3000 ANY_3000 ANY_3000 ANY_3000)
+					ANY_30000= $(ANY_15000 ANY_15000)
+					ANY_60000= $(ANY_30000 ANY_30000)
+					ANY_120000= $(ANY_60000 ANY_60000)
+					ANY_240000= $(ANY_120000 ANY_120000)
+					cr = "\n"
+					delim1 = "This document is automatically generated."
+					delim2 = "Please do not respond to this mail."
+					delim3 = (" FROM " / " DE ")
+					delim4 = ("/TO        " / "/À           ")
+					delim5 = (" AT CHECK-IN, PLEASE SHOW A PICTURE IDENTIFICATION AND THE DOCUMENT YOU GAVE"/ " A L'ENREGISTREMENT, VOUS DEVREZ PRESENTER UNE PIECE D'IDENTITE AVEC")
+					delim6 = (" FOR REFERENCE AT RESERVATION TIME" / " PHOTOGRAPHIE, ET LE DOCUMENT DONT VOUS AVEZ DONNE LA REFERENCE A LA")
+					delim7 = ("FLIGHT(S) CALCULATED AVERAGE CO2 EMISSIONS IS 1435.71 KG/PERSON" / "L'ÉMISSION CO2 MOYENNE CALCULÉE EST")
+					delim8 = "SOURCE :"
+					delim9= "\f"
+
+					/*******************************************/
+
+					//HEADER Block
+
+					HEADER= header:("" HEADER_VALUE){return toObject("",header)}
+
+					//HEADER_LABEL="Return"{return {"label":"Return"}}
+
+					HEADER_VALUE = val:ANY_240000 {
+					 var is_html = val.match(/<html>/img);
+					if(is_html){
+						// Convert HTML to TEXT
+						val = val.replace(/<tr>/g,'<br>');
+						val = val.replace(/<br>\s?/g,'\r');
+						val = val.replace(/<\/?b>/g,'*');
+						val = val.replace(/<\/font>/g,' ');
+						val = val.replace(/&gt;/g,'');
+						val = val.replace(/&lt;/g,'');
+						val = val.replace(/&nbsp;/g,' ');
+						val = val.replace(/#.*\n\n/g,'');
+						val = val.replace(/<[^>]+>/g,'');
+						val = val.replace(/^\s+([\w\*])/gm,'$1');
+						val = val.replace(/(\w)\s+$/gm,'$1');
+						val = val.replace(/\r\r\r/g,'');
+					}
+					val = val.replace(/\*/g,'');
+					val = val.replace(/\?/g,'');
+					val = val.replace(/\|/g,'');
+					val = val.replace(/^\s*(\w)/g,'$1');
+					//alert(val)
+					//prompt("Copy to clipboard: Ctrl+C, Enter",val);
+
+					var nbtkt = 0;
+					var date1 = matchRe(_regex_issuing_date,val,1).trim()
+					//if(!date1) date1 = matchRe(/ISO:\s*\w\w\s+\d\d\w\w\w(\d\d+)\s/m,val,1).trim()
+					// if (date1.length == 2){
+					// var year1="20"+date1
+					// }
+                    var year1=date1;
+					//alert('year1='+year1);
+					var agent = "00";//matchRe(/ISSUED BY :\s+(\w+)/im,val,1).trim()
+					// Handle case of IDT format that hase not agent. set it to 00
+					//if(agent == "") agent = "00";
+					//--
+					var cuco = matchRe(/taxes:\s*([A-Z]{3})\s+/gmi,val,1).trim();
+					// Currency rate
+					var cur_rate = 1;
+					//var rate = matchRe(/EXCHANGE\sRATE\s:\s((?:.){8})\s[A-Z]{3}/im, val,1);
+					//if(rate != "") cur_rate = rate;
+
+					var serfee1 = val.match(/SERVICE\sFEE\s+:\s*(?:([\d\.\,]+)\s\w{3})?/img)
+					//alert('fee1='+serfee);
+					totalfee = [0,0,0,0,0,0,0,0,0];
+					var serfee = [[],[],[],[],[],[],[],[],[]];
+					if(serfee1){
+						for(var i=0;i<serfee1.length;i++){
+							var fee = matchRe(/SERVICE\sFEE\s+:\s*(?:([\d\.\,]+)\s\w{3})?/im,serfee1[i],1).trim();
+							//alert('fee='+fee);
+							if(fee && fee!="undefined"){
+								fee = fee.replace(',','');
+								fee = parseFloat(fee);totalfee[i] = fee;	
+								//serfee[i] = [{"name":"Service Fee","amount":fee}];
+							}
+						}					
+					}
+					//alert('totalfee='+totalfee);
+					var serfee2 = matchRe(/OTHER\sFEE\s+:\s*\w{3}\s(?:([\d\.\,]+)\s\w{3})?/im,val,1).trim()
+					//alert('fee='+serfee);
+					if(serfee2  && serfee2!='undefined'){
+						serfee2 = serfee2.replace(',','');
+						serfee2 = parseFloat(serfee2);totalfee[0] = totalfee[0] + serfee2;
+					}else serfee2 = 0;
+					//alert('totalfee='+totalfee)
+					
+					/*if(serfee >0) {
+						var serfee1 = [{"name":"Service Fee","amount":serfee}]
+					}*/
+					//---
+
+					var _fop = matchRe(_regex_form_of_payement,val,1).trim();
+					var fop = [];
+					switch(_fop.toUpperCase()){
+						case "CASH": fop[0] = "cash";break;
+						case "CC": fop[0] = "nonref";break;
+						case "CREDIT": fop[0] = "nonref";break;
+						case "CHECK": fop[0] = "check";break;
+						default : fop[0] = "nonref";
+					};
+
+					//---
+					var _fopref = matchRe(_regex_form_of_payement,val,1).trim();
+					var fopref = [""];
+					if(_fopref!="") fopref[0]= _fopref;
+					//---
+					var classe = matchRe(_regex_class,val,1).trim();
+					// Service class table
+					var cl = val.match(_regex_class);
+					var cl1 = ['y','Y','Y','Y'], clcab1 = ["economy","economy","economy","economy","economy","economy",];//alert('here')
+					//alert('classe:'+classe)
+					if(cl){
+						for(var i = 0; i < cl.length; i++){
+							cl1[i] = matchRe(_regex_class, cl[i],1).trim();
+							if( /G|K|Q|X|Y|T|V|N|M|L|H|B|S|W/.test(cl1[i])) clcab1[i] = "economy"
+							else if( /U|E/.test(cl1[i])) clcab1[i] = "premium"
+							else if( /Z|I|D|C|J/.test(cl1[i])) clcab1[i] = "business"
+							else if( /R|P|F|A/.test(cl1[i])) clcab1[i] = "first"
+						}
+					}
+					//---
+					var departuretime = matchRe(/\s+(\d\d:\d\d)\s+\w\w/im,val,1).trim();
+					//alert('here:')
+					/*if(!departuretime){
+						departuretime = matchRe(/\n+(?:\w{3}\s+)?\d\d\w{3}\n+(\d\d:\d\d)$/im,val,1).trim();
+					}
+					departuretime = matchRe(/(\d\d:\d\d)$/im,val,1).trim();
+					*/
+					//---
+					console.log(val)
+					var issueddate = matchRe(_regex_issuing_date,val,1).trim();
+					//if(!issueddate) issueddate = matchRe(_regex_issuing_date,val,1).trim()
+				    alert('issueddate='+issueddate)
+					var  month=matchRe(/\d\d(\w\w\w)\d\d+/m,issueddate,1).trim();
+					//var  month=matchRe(/\d\d\s*([A-Z]+)\s*\d\d/m,issueddate,1).trim();
+					alert('month='+month)
+					switch(month.toUpperCase()){
+						case "JAN":month="00";				   break;
+						case "Jan":month="00";				   break;
+						case "JANUARY":month="00";				   break;
+						case "JANVIER":month="00";				   break;
+						case "FEB":month="01";				   break;
+						case "Feb":month="01";				   break;
+						case "FEBRUARY":month="01";				   break;
+						case "FEVRIER":month="01";				   break;
+						case "MAR":month="02";				   break;
+						case "Mar":month="02";				   break;
+						case "MARCH":month="02";				   break;
+						case "MARS":month="02";				   break;
+						case "APR":month="03";				   break;
+						case "Apr":month="03";				   break;
+						case "APRIL":month="03";				   break;
+						case "AVRIL":month="03";				   break;
+						case "MAY":month="04";				   break;
+						case "May":month="04";				   break;
+						case "MAI":month="04";				   break;
+						case "JUN":month="05";				   break;
+						case "Jun":month="05";				   break;
+						case "JUNE":month="05";				   break;
+						case "JUIN":month="05";				   break;
+						case "JUL":month="06";				   break;
+						case "Jul":month="06";				   break;
+						case "JULY":month="06";				   break;
+						case "JUILLET":month="06";				   break;
+						case "Aug":month="07";				   break;
+						case "AUG":month="07";				   break;
+						case "AUGUST":month="07";				   break;
+						case "AOUT":month="07";				   break;
+						case "SEP":month="08";				   break;
+						case "Sep":month="08";				   break;
+						case "SEPTEMBER":month="08";				   break;
+						case "SEPTEMBRE":month="08";				   break;
+						case "Oct":month="09";				   break;
+						case "OCT":month="09";				   break;
+						case "OCTOBER":month="09";				   break;
+						case "OCTOBRE":month="09";				   break;
+						case "NOV":month="10";				   break;
+						case "Nov":month="10";				   break;
+						case "NOVEMBER":month="10";				   break;
+						case "NOVEMBRE":month="10";				   break;
+						case "DEC":month="11";				   break;
+						case "Dec":month="11";				   break;
+						case "DECEMBER":month="11";				   break;
+						case "DECEMBRE":month="11";				   break;
+						default:   month="" ;				   break;
+					}
+					//var day = issueddate[0]+issueddate[1];
+					var day = matchRe(/(\d\d)\w\w\w\d\d+/m,issueddate,1).trim();
+					var year ;
+
+					issueddate =year1+"-"+(parseFloat(month)+1)+"-"+day;
+					alert('issueddate:'+issueddate)
+					//---
+					var airlinecode = 725;//matchRe(/TICKET\sNUMBER\s+:\s(\d{3})\s\d{10}/im,val,1).trim();
+					//--Number of ticket
+					//---
+					var reg= _regex_ticket_number;
+					var nbtkt1 = val.match(reg);
+					nbtkt = nbtkt1.length;
+					//----
+					//alert('nbtkt='+nbtkt)
+					// document type
+					var doctype = [];
+					//var doctype1 = val.match(/\s\sMCO\s\W|PAYMENT\s:\s*\*?\s*MCO\s*\*?/im);
+					var doctype1 = val.match(/(?:TICKET|EMD)\s+NUMBER\??\s+:|\s\sMCO\s\W|PAYMENT\s:\s*\*?\s*MCO\s*\*?/img);
+					//if(doctype1) doctype = "mco";
+					//var doctype1 = val.match(/EMD\s+NUMBER\??\s*:/im);
+					//if(doctype1) doctype = "emd";
+					var nbretkt = nbtkt;
+					for(var i = 0; i < nbtkt; i++){
+						if(doctype1[i].match(/EMD\s+NUMBER\??\s*:/im)){
+							doctype[i]="emd";nbretkt--;
+						}else{
+							if(doctype1[i].match(/\s\sMCO\s\W|PAYMENT\s:\s*\*?\s*MCO\s*\*?/im)){
+								doctype[i]="mco";nbretkt--;
+							}else{
+								doctype[i]="eticket";
+							}
+						}
+					}
+					//alert('doctype:'+doctype)
+					
+					var reg=/^\s*\d\s+[\w\s\/]+?\s+\w\w\s+\d{0,4}\s+[A-Z]?\s*\d\d(?:\/|\.)/img;
+					
+					var NBTKTSEG1 = val.match(reg);
+					 //alert('NBTKTSEG1='+NBTKTSEG1);
+					// alert('nbtkt='+nbtkt);
+					if(NBTKTSEG1){
+						NBTKTSEG = NBTKTSEG1.length/nbtkt;
+					}else {
+						reg=/\s\w{5,6}\s+[A-Z]\s+\d\d?[A-Z]{3}\s*/img;
+						NBTKTSEG1 = val.match(reg);
+						if(NBTKTSEG1){
+							NBTKTSEG = NBTKTSEG1.length/nbtkt;
+						}else NBTKTSEG = 0; 
+					}
+					
+					var itinerary = "" ;
+				   // 
+					//---
+					var passenger = val.match(_regex_traveler_name);
+					if(!passenger) passenger = val.match(/Traveler\s+(.+)/img);
+
+					////alert('passenger='+passenger)
+					for(var i=0;i<nbtkt;i++){
+						var pax = passenger[i]
+						passenger[i] = matchRe(_regex_traveler_name,pax,1).trim();
+						if(!passenger[i]) passenger[i] = matchRe(/Traveler\s+(.+)/im,pax,1).trim();
+						//alert("passengeri="+passenger[i])
+
+					}
+					//alert('passenger:'+passenger)
+					//---
+					var clientnote = matchRe(/ENDORSEMENT\/RESTRICTION\s+:\s*([\w\s]*?)/img,val,1).trim();
+					//alert('here')
+					//---
+					//reg1=/(?:TICKET|EMD)\s*(?:NUMBER\s+)?:\s*\*?\d{3}\s*\W(\d{10})/img;
+					var ticketnumber = val.match(_regex_ticket_number);
+					//alert('ticketnumber='+ticketnumber)
+					if(ticketnumber){
+						//alert("t1="+ticketnumber)
+						for(var i = 0; i < ticketnumber.length; i++){
+							ticketnumber[i] = matchRe(_regex_ticket_number,ticketnumber[i],1).trim();
+							if(isNaN(parseFloat(ticketnumber[i]))){
+								errmsg = 'Ticket Number missing';
+								totrash = true;
+							}
+						}
+					}
+					//alert('ticketnumber='+ticketnumber)
+					//var conjnumber = matchRe(/\d{13}\s*-?\s*(\d*)\d\d\w{3}/img,val,1);
+					reg1=/\d{13}\s*-?\s*(\d*)\d\d\w{3}/img;
+					var conjnumber = ["","","","","","","","",""]
+					//alert('here')
+					//----
+					var issuingoidorpcc = "www.arikair.com";//matchRe(/Agent Office:\s+(\w+)/m,val,1).trim();
+					//---
+					var pnr = matchRe(_regex_pnr,val,1).trim();
+					//---
+					var iata = "";
+					//---
+					//alert('pnr='+pnr)
+					var totaltax = [];
+					var airtax = [[],[],[],[],[],[],[],[],[],[],[]];
+					var j=0;
+					var airtax_code,airtax_amount,airtax_total=[0,0,0,0,0,0,0,0,0];
+					var _totaltax = val.match(/Tax\s+:([\w\W]+?)Total/img);
+					//alert('_totaltax='+_totaltax)
+					for(var i = 0; i < nbtkt; i++){
+						//var totaltax = _totaltax[i].match(/[A-Z]{3}\s+([\d\.,]+)\s[A-Z0-9]{2}\d?/mg); -- old version
+						var totaltax = _totaltax[i].match(/[A-Z]{3}\s+([\d\.,]+)\s?[A-Z]{2}/mg);
+						//alert('totaltaxi='+totaltax)
+						//alert('airtax='+airtax)
+						if(totaltax){
+							//alert('totaltax='+totaltax+" nbtkt ="+nbtkt )
+							//j=totaltax.length/nbetkt;
+							for(var k=0; k < totaltax.length;k++){
+								//airtax_amount = matchRe(/[A-Z]{3}\s+([\d\.,]+)\s[A-Z0-9]{2}\d?/im,totaltax[k],1).trim();-- old version
+								airtax_amount = matchRe(/[A-Z]{3}\s+([\d\.,]+)\s?[A-Z]{2}/im,totaltax[k],1).trim();
+								//alert('before tax amount i='+airtax_amount)
+								//airtax_code = matchRe(/[A-Z]{3}\s+[\d\.,]+\s([A-Z0-9]{2}\d?)/im,totaltax[k],1).trim(); -- old version
+								airtax_code = matchRe(/[A-Z]{3}\s+[\d\.,]+\s?([A-Z]{2})/im,totaltax[k],1).trim();
+								//var paid = matchRe(/([A-Z]{2,3})\s[\d\.,]+\s[A-Z0-9]{2}\s/im,totaltax[i],1).trim();
+								if(airtax_amount){
+									airtax_amount = airtax_amount.replace(/\s/,'');
+									airtax_amount = airtax_amount.replace(/,/,'');
+									airtax_amount =  parseFloat(airtax_amount);
+									//alert('tax amount i='+airtax_amount)
+									airtax[i][k]= {"code":airtax_code,"amount": airtax_amount};
+									airtax_total[i] += airtax_amount;
+								}
+							}
+						
+						}else{
+							airtax[i] = [];airtax_total[i]=0;
+							alert('airtaxi='+airtax[i]);alert('airtax_total='+airtax_total[i])
+						}
+					}
+					//alert('airtax0='+airtax[0]);
+					//alert('airtax_total='+airtax_total)
+					// Surchage
+					/*var _totaltax = val.match(/SURCHARGES\s+:([\w\W]+?)$/mg);
+					//var _totaltax = val.match(/SURCHARGES\s+:([^\n]*)/mg);
+					var j=nbtkt;
+					for(var i = 0; i < nbtkt; i++){
+						var totaltax = _totaltax[i].match(/[A-Z]{3}\s+([\d\.,]+)\s[A-Z0-9]{2}\d?/mg);
+					//	alert('totaltaxi surcharge='+totaltax)
+						//alert('airtax='+airtax)
+						if(totaltax){
+							alert('totaltax surchage='+totaltax+" nbtkt ="+nbtkt )
+							//alert('airtax.length'+airtax.length)
+							//alert('totaltax.length'+totaltax.length)
+							//j=totaltax.length/nbetkt;
+							for(var k=0; k < totaltax.length;k++){
+								airtax_amount = matchRe(/[A-Z]{3}\s+([\d\.,]+)\s[A-Z0-9]{2}\d?/im,totaltax[k],1).trim();
+								//alert('before tax amount i='+airtax_amount)
+								airtax_code = matchRe(/[A-Z]{3}\s+[\d\.,]+\s([A-Z0-9]{2}\d?)/im,totaltax[k],1).trim();
+								//var paid = matchRe(/([A-Z]{2,3})\s[\d\.,]+\s[A-Z0-9]{2}\s/im,totaltax[i],1).trim();
+								if(airtax_amount ){
+									airtax_amount = airtax_amount.replace(/\s/,'');
+									airtax_amount = airtax_amount.replace(/,/,'');
+									airtax_amount = parseFloat(airtax_amount);
+									//alert('purchase tax amount i='+airtax_amount+' amount i='+airtax_code)
+									airtax[i].push({"code":airtax_code,"amount": airtax_amount});
+									alert('purchase + tax amount il='+airtax[i][k])
+									airtax_total[i] += airtax_amount;
+								}
+							}
+						}
+					}
+					*/
+					//alert('finish surchage=');
+					/*if(_totaltax){
+						var totaltax = _totaltax[0].match(/[A-Z]{3}\s+([\d\.,]+)\s[A-Z0-9]{2}\d?/mg);
+						var airtax = [];
+						var j=0;
+						var airtax_code,airtax_amount,airtax_total=0;
+						if(totaltax){
+							//alert('totaltax='+totaltax+" nbtkt ="+nbtkt )
+							j=totaltax.length/nbetkt;
+							for(var i=0; i < totaltax.length/nbtkt;i++){
+								airtax_amount = matchRe(/[A-Z]{3}\s+([\d\.,]+)\s[A-Z0-9]{2}\d?/im,totaltax[i],1).trim();
+								//alert('before tax amount i='+airtax_amount)
+								airtax_code = matchRe(/[A-Z]{3}\s+[\d\.,]+\s([A-Z0-9]{2}\d?)/im,totaltax[i],1).trim();
+								//var paid = matchRe(/([A-Z]{2,3})\s[\d\.,]+\s[A-Z0-9]{2}\s/im,totaltax[i],1).trim();
+								if(airtax_amount ){
+									airtax_amount = airtax_amount.replace(/\s/,'');
+									airtax_amount = airtax_amount.replace(/,/,'');
+									airtax_amount =  parseFloat(airtax_amount)
+									//alert('tax amount i='+airtax_amount)
+									airtax[i]= {"code":airtax_code,"amount": airtax_amount}
+									airtax_total += airtax_amount
+								}
+							}
+						}
+					}else{
+						var airtax = [];
+						var airtax_code,airtax_amount=0,airtax_total=0;
+						
+					}*/
+					
+					//alert('airtax='+airtax)
+					//alert('airtax_total='+airtax_total)
+					for(var i=0;i<nbtkt;i++){
+						if(totalfee[i] >0){
+							airtax[i].puch()= {"code":"Service Fee","amount": totalfee[i]}
+							airtax_total[i] += totalfee[i];
+						}
+					}
+					
+					if(serfee2 >0){
+						airtax[0].puch()= {"code":"Other Fee","amount": serfee2}
+						airtax_total[0] += serfee2;
+					}
+
+					totaltax = airtax_total;
+					//alert('totaltax='+totaltax);
+					//alert('airtax='+airtax);
+					//Total Price
+					var total_fare =  val.match(/TOTAL\s*(?:Amount)?\s*:\s+\*?[A-Z]{0,3}([\*\s\.,\d]*)*\s/img);
+					for(var i=0;i<nbtkt;i++){
+						var t_fare =  matchRe(/TOTAL\s*(?:Amount)?\s*:\s+\*?[A-Z]{0,3}([\*\s\.,\d]*)*\s/im,total_fare[i],1).trim();
+						if(t_fare) {
+							t_fare = t_fare.replace(/\s/,'');
+							t_fare = t_fare.replace(/\*/,'');
+							t_fare = t_fare.replace(/,/,'');
+							total_fare[i] = parseFloat(t_fare);
+						}else total_fare[i] = 0;
+					}
+					//alert('total_fare='+total_fare);
+					
+					var total_fare_indic =  val.match(/TOTAL\s*(?:Amount)?\s*:\s+\*?[A-Z]{0,3}([\*\s\.,\d]*)*[A-Z]*\s/img);
+					for(var i=0;i<nbtkt;i++){
+						var t_fare_indic =  matchRe(/TOTAL\s*(?:Amount)?\s*:\s+\*?[A-Z]{0,3}([\*\s\.,\d]*)*[A-Z]*\s/im,total_fare_indic[i],1).trim();
+						if(t_fare_indic =="NO ADC" || t_fare_indic=="IT") {
+							total_fare[i] = 0;
+							totaltax[i] = 0;
+							airtax[i]= [];
+						}
+					
+					}
+					
+					//alert('total_fare_indic='+total_fare)
+					// Public fare
+
+					var publicfare = [0,0,0,0,0,0,0,0,0];
+					
+				   for(var i=0; i< nbtkt;i++){
+					  if(total_fare[i]>0){
+						  publicfare[i] = parseFloat(total_fare[i]) - parseFloat(totaltax[i]);
+						  publicfare[i] = parseFloat(publicfare[i]);
+					  }
+				   }
+					
+					//alert('pubfare='+publicfare[0])
+
+					//--
+					var originecityname1 = [];
+					var fare_cal = true;
+				//	var originecityname = val.match(/FARE\sCALCULATION\sAREA\s+:\s*([\w\W]+?)TICKET/img); -- old versoin
+					var originecityname = matchRe(/FARE\sCALCULATION\s*(?:AREA)?\*?\s+:\s*([\w\W]+?)\s*(?:TICKET|Air)/im,val,1);
+					//var originecityname = matchRe(/FARE\sCALCULATION\s(?:AREA)?\s+:\s*(([\w\W]+?))\s*(?:TICKET|Air)/img,val,2);
+					//var originecityname2 = val.match(/FARE\sCALCULATION\s(?:AREA)?\s+:\s*([\w\W]+?)\s*(?:TICKET|Air)/img);
+					//alert('doctype='+doctype)
+					alert('originecityname='+originecityname)
+					//alert('originecityname2='+originecityname2)
+					if((doctype!="mco" && doctype!="emd") || originecityname){
+						if(originecityname){
+							//originecityname = originecityname[0].match(/\s\*?([A-Z]{3})[\d\.]*\s/img)
+							
+							//originecityname = originecityname.match(/([A-Z]{3})[\d\.]*\s[\w\d\.]*\s*\w\w\s/img)
+							originecityname = originecityname.match(/([A-Z]{3})[\s\d\.\w]*?(\s|0)\w\w\s/img)
+							//alert('orig1='+originecityname[0])
+							//alert('NBTKTSEG='+NBTKTSEG)
+							for(var i = 0; i < NBTKTSEG; i++){
+								//alert('ici originecityname1[i]='+originecityname[i])
+								originecityname1[i] = matchRe(/([A-Z]{3})/im, originecityname[i],1).trim();
+								//alert('originecityname2[i]='+originecityname1[i])
+								itinerary = itinerary + " " + originecityname1[i]
+							}
+							
+						}else{
+							fare_cal=false;
+							originecityname = val.match(/^\s*\d\s+([^\/]+)\//img);
+							//	alert('orig2='+originecityname)
+							for(var i = 0; i < NBTKTSEG; i++){
+								originecityname1 [i] = matchRe(/^\s*\d\s+([^\/]+)\//m, originecityname[i],1).trim();
+								itinerary = itinerary + " " + originecityname1[i]
+							}
+						}
+
+						originecityname = originecityname1;		
+						
+					}else {
+						
+						originecityname = val.match(/^\d\s(.+)\s\//img);
+						//alert('NBTKTSEG='+NBTKTSEG)
+						for(var i = 0; i < NBTKTSEG; i++){
+							originecityname1 [i] = matchRe(/^\d\s(.+)\s\//m, originecityname[i],1).trim();
+							itinerary = itinerary + " " + originecityname1[i]
+						}
+						
+						originecityname = originecityname1;	
+					}
+					//alert('originecityname='+originecityname)
+					alert('itinerary1='+itinerary)
+					var origineairportcode = originecityname;
+					//---
+					var is_open = false;
+					var destinationcityname1 = [];
+					//var destinationcityname = val.match(/FARE\sCALCULATION\sAREA\s+:\s*([\w\W]+?)TICKET/mg);
+					 var destinationcityname = matchRe(/FARE\sCALCULATION\s(?:AREA)?\s+:\s*([\w\W]+?)\s*(?:TICKET|Air)/im,val,1);				
+					 //var destinationcityname = val.match(/FARE\sCALCULATION\s(?:AREA)?\s+:\s*([\w\W]+?)\s*(?:TICKET|Air)/img);
+					//alert('destinationcityname='+destinationcityname)
+					if((doctype!="mco" && doctype!="emd" ) || destinationcityname){
+						if(destinationcityname){
+							destinationcityname = destinationcityname.match(/\s*\w\w\s(?:X\W)?([A-Z]{3})/mg);
+							//alert('dest='+destinationcityname)
+							for(var i = 0; i < NBTKTSEG; i++){
+							  destinationcityname1[i] = matchRe(/\s*\w\w\s(?:X\W)?([A-Z]{3})/, destinationcityname[i],1).trim();
+							 // alert('desti='+destinationcityname1[i])
+							}
+						}else{
+							if(fare_cal){
+								 for(var i = 1; i < NBTKTSEG; i++){
+								  destinationcityname1[i-1] = originecityname[i];
+								}
+								destinationcityname1[originecityname.length-1] = matchRe(/^\s*([\w\s]+)\s(?:APT)?$/m, val,1).trim();
+							}else{
+								destinationcityname = val.match(/^\s*\d\s([\w\W]+)\s\w\w\s\d/mg);
+								for(var i = 0; i < NBTKTSEG; i++){
+									destinationcityname1 [i] = matchRe(/\/([\w\s]+)\s\w\w\s\d/m, destinationcityname[i],1).trim();
+								}
+							}
+						}
+						destinationcityname = destinationcityname1;itinerary = itinerary + " " + destinationcityname1[destinationcityname.length-1]
+					}else {
+						destinationcityname = val.match(/\/\s+(.+)\s+\w{2}\s+\d\d/img);
+						for(var i = 0; i < NBTKTSEG; i++){
+							destinationcityname1 [i] = matchRe(/\/\s+(.+)\s+\w{2}\s+\d\d/m, destinationcityname[i],1).trim();
+							itinerary = itinerary + " " + originecityname1[i]
+						}
+						
+						destinationcityname = destinationcityname1;;	
+					}
+					alert('itinerary='+itinerary)				
+					
+					var destinationairportcode = destinationcityname;
+					//alert('here')
+
+					//--
+					var airlineiatacode ;
+					var airlineiatacode1 = [];
+					for(var i = 0; i < NBTKTSEG; i++){
+						airlineiatacode1 [i] = 'W3';
+					}
+					airlineiatacode =airlineiatacode1;
+					//----
+
+					//var departuredates = val.match(/\d\s+[A-Z]?\s*(\d\d(?:\/|\.)\d\d(?:\/|\.)\d\d\d\d)\s/img); -- old version
+					var v = 1
+					var departuredates = val.match(/\d\s+[A-Z]?\s*(\d\d[a-z]{3})/img);
+					if(!departuredates) {
+						departuredates = val.match(/\d\s+[A-Z]?\s*(\d\d(?:\/|\.)\d\d(?:\/|\.)\d\d\d\d)\s/img)
+						if(departuredates) v=0
+					}
+					if(!departuredates){
+						departuredates = val.match(/\s[A-Z]\s+(OPEN)/img);
+						//alert('dep='+departuredates)
+						if(departuredates!= null){
+							is_open = true;
+							for(var i=0;i<NBTKTSEG;i++){
+								departuredates[i] = "2099-12-31";
+							}
+						}
+					}
+					alert('doctype='+doctype)
+					if((doctype=="mco" || doctype=="emd") && !departuredates) departuredates = [];
+					//alert('departuredates2='+departuredates[0])
+					var departuredates1 = [];
+					var prev_month ="";
+					year = year1;
+					//alert('departuredates='+departuredates[0])
+					//alert('departuredates='+departuredates[0])
+					if(departuredates!=[]){
+						
+						for(var i = 0; i < departuredates.length; i++){
+							if(v==0){
+								var  month=matchRe(/\d\s+[A-Z]?\s*\d\d(?:\/|\.)(\d\d)(?:\/|\.)\d\d\d\d\s/i,departuredates[i],1).trim();
+								var day = matchRe(/\d\s+[A-Z]?\s*(\d\d)(?:\/|\.)\d\d(?:\/|\.)\d\d\d\d\s/i,departuredates[i],1).trim();;
+								var year = matchRe(/\d\s+[A-Z]?\s*\d\d(?:\/|\.)\d\d(?:\/|\.)\d\d(\d\d)\s/i,departuredates[i],1).trim();
+								departuredates1[i] = "20"+year +"-"+ (parseFloat(month)) +"-"+ day 
+								alert('departuredates1[i]='+departuredates1[i]);
+							}else 	departuredates1[i] = ConvertDate(departuredates[i],year)
+						}
+					departuredates = departuredates1 ;
+					}
+					alert('departuredates='+departuredates);
+					//---
+					if(departuredates != []){
+						var departuredate = departuredates [0];
+					}else {
+						var departuredate = issueddate;
+					}
+					
+					//alert('here arrivaltime')
+					//---
+					var	arrivaltime = val.match(/\s\d\d:\d\d\s+(\d\d:\d\d)\s/img);
+					if(!arrivaltime){
+						arrivaltime = val.match(/\s[A-Z]\s+(OPEN)/img);
+						if(arrivaltime!= null){
+							is_open = true;
+
+							for(var i=0;i<NBTKTSEG;i++){
+								arrivaltime[i] = "23:59";
+							}
+						}else arrivaltime = [];
+					}
+					
+					if((doctype=="mco" || doctype=="emd" ) && !arrivaltime) arrivaltime = [];
+					//alert('arrivaltime='+arrivaltime)
+					var arrti = [],artime = ["00:00:000"];
+					if(!is_open){
+						for(var i = 0; i < arrivaltime.length; i++ ){
+							artime [i] =matchRe(/\s\d\d:\d\d\s+(\d\d:\d\d)\s/i,arrivaltime[i],1).trim();
+							arrti [i] = matchRe(/\s\d\d:\d\d\s+(\d\d):\d\d\s/i,arrivaltime[i],1).trim();
+							if (artime[i]=="") artime[i] = "00:00:000";
+						}
+						arrivaltime = artime ;
+					}
+					//---
+					//alert('arr='+arrivaltime)
+
+					//var departuretimes = [];
+					var departuretimes = val.match(/\s(\d\d:\d\d)\s+\d\d:\d\d\s/img);
+					if(departuretimes){
+						if(is_open){
+							//alert('here op='+is_open)
+							departuretimes = [];
+								for(var i=0;i<NBTKTSEG;i++){
+									departuretimes[i] = "23:59";//alert('depi='+departuretimes[i])
+								}
+
+							}else{
+								
+								var departuretimes1=[];
+								var depti = [];
+								for(var i = 0; i < departuretimes.length; i++ ){
+									departuretimes1 [i] = matchRe(/\s(\d\d:\d\d)\s+\d\d:\d\d\s/i,departuretimes[i],1).trim();
+									depti[i] = matchRe(/\s(\d\d):\d\d\s+\d\d:\d\d\s/i,departuretimes[i],1).trim();
+									if (departuretimes1[i]=="") departuretimes1[i] = "00:00:000";
+								}
+								departuretimes = departuretimes1 ;
+							}
+								
+					}else departuretimes = ["00:00:000"];
+					//alert('arr=dep')
+					//alert('departuredates='+departuredates);
+					//alert('departuretimes='+departuretimes);
+					//alert('depti='+depti);
+					//alert('arrti='+arrti);
+					//----
+					var arrivaldate=[];
+					if(is_open){
+						for(var i=0;i<NBTKTSEG;i++){
+							arrivaldate[i] = "2099-12-31";
+						}
+					}else{
+						var arrivaldate1=[]
+						if((depti && arrti)) {
+							for(var i = 0; i < departuretimes.length; i++){
+								if(parseInt(depti[i])<parseInt(arrti[i])){
+									//alert('departuredates*='+departuredates);
+									arrivaldate1[i]=departuredates[i]
+								}else{
+									var d = new Date(departuredates[i]);
+									d.setDate(d.getDate() + 1);
+									var month = parseInt(d.getMonth())+1;
+									arrivaldate1[i]= d.getFullYear()+'-'+month+'-'+d.getDate();
+								}
+							}
+							
+						}
+						//alert('arrivaldate1='+arrivaldate1);
+						arrivaldate = (arrivaldate1[0])? arrivaldate1 : departuredates;
+						//alert('arrivaldate='+arrivaldate);
+						
+					}
+
+					//alert('here doctype='+doctype)
+					//-----
+					if(doctype!="mco" && doctype!="emd" )	var returndate=arrivaldate[arrivaldate.length - 1]; else var returndate= issueddate;
+					//----
+					//var flightnumber = val.match(/\s\w\w\s+(\d{0,4})\s+[A-Z]?\s*\d\d(?:\/|\.)\d/img);
+					var flightnumber = val.match(/\s(W3\s*\d+)\s+[A-Z]?\s*\d\d\.?\w{2,3}/img);
+					
+					const regex=/\n/gi
+					//alert('flightnumber='+flightnumber)
+					
+					if(flightnumber && flightnumber !="undefined"){
+						if(is_open){
+							for(var i=0;i<NBTKTSEG;i++){
+								flightnumber[i] = "";
+							}
+						}else{
+							var  flightnumber1 = [];
+							for(var i = 0; i < flightnumber.length; i++ ){
+								flightnumber1 [i] = matchRe(/\s(W3\s*\d+)\s+[A-Z]?\s*\d\d\.?\w{2,3}/i,flightnumber[i],1).trim();
+								flightnumber1 [i] = flightnumber1 [i].replace(regex,' ');
+							}
+							flightnumber = flightnumber1;
+						}
+					}else flightnumber=[];
+					//alert('here fabas1')
+					// Fare Basis Handler
+					var fabas1 = ["","","",""];
+					if(is_open){
+						for(var i=0;i<NBTKTSEG;i++){
+							fabas1[i] = "";
+						}
+					}else{
+						//var fabas = val.match(/\d\s+\d\d:\d\d\s+(?:\/\d\s+)?\w\w\s+([\W\w]*?)\s+|^\w\w\s+(\w+)\s+\d\d\//mg)||[]; -- old version
+						var fabas = val.match(/Fare Basis\s+(\w+)\s/mg)||[];
+						//alert('fabas='+fabas)
+						//alert('nbseg='+NBTKTSEG)
+						if(fabas[0]){
+							//alert('nbseg1='+NBTKTSEG)
+							for(var i = 0; i < NBTKTSEG; i++){
+								fabas1[i] = matchRe(/Fare Basis\s+(\w+)\s/i, fabas[i],1).trim();
+								//fabas1[i] = matchRe(/\d\s+\d\d:\d\d\s+(?:\/\d\s+)?\w\w\s+([\W\w]*?)\s+/i, fabas[i],1).trim();
+								//alert('fbi='+fabas1[i])
+								if(!fabas1[i]) fabas1[i] = matchRe(/^\w\w\s+(\w+)\s+\d\d\//i, fabas[i],1).trim();
+								//alert('fbi='+fabas1[i])
+							}
+							//alert('here fb='+fabas1[0])
+						}
+						
+						
+					}
+					//alert('here pnrstco1')
+					// PNR Status code Handler
+					var pnrstco1 = [];
+					if(is_open){
+						for(var i=0;i<NBTKTSEG;i++){
+							pnrstco1[i] = "Holding Confirmed";
+						}
+					}else{
+						//alert('pnrstco='+pnrstco1)
+						var pnrstco = val.match(/\d\d:\d\d\s+(?:\/\d\s+)?(\w\w)\s+[\W\w]*?\s*\d\d(?:\/|\.)/mg)||[];
+						//alert('pnrstco='+pnrstco)
+						for(var i = 0; i < NBTKTSEG; i++){
+						   if(pnrstco1[i]==null){
+								pnrstco1[i] = 'Holding Confirmed';
+							}else{
+								pnrstco1[i] = matchRe(/\d\d:\d\d\s+(?:\/\d\s+)?(\w\w)\s+[\W\w]*?\s*\d\d(?:\/|\.)/im, pnrstco[i],0).trim();
+							  switch (pnrstco1[i]){
+								case 'HK': pnrstco1[i] = 'Holding Confirmed'; break;
+								case 'OK': pnrstco1[i] = 'Holding Confirmed'; break;
+								case 'HL': pnrstco1[i] = 'Holding Waitlist'; break;
+								case 'BK': pnrstco1[i] = 'Passive Sold Segment, or Booked outside'; break;
+								case 'BL': pnrstco1[i] = 'Booked outside and Waitlisted'; break;
+								case 'BN': pnrstco1[i] = 'Booked outside and Requested'; break;
+								case 'AK': pnrstco1[i] = 'Confirmed outside'; break;
+								case 'AL': pnrstco1[i] = 'Waitlist outside'; break;
+								case 'AN': pnrstco1[i] = 'Requested outside'; break;
+								case 'GK': pnrstco1[i] = 'Passive Sold Segment'; break;
+								case 'NO': pnrstco1[i] = 'Open Segment'; break;
+								case 'PB': pnrstco1[i] = 'Holding Waitlist'; break;
+								default: pnrstco1[i] = 'Holding Confirmed';
+								}
+							}
+
+						}
+					}
+						//alert('here')
+					//---
+					var t=["","","","","","","","",""],o=["","","","","","","","",""];
+					//alert('here segment1');
+					//---
+					var segment1 = [];
+					//var flydur = val.match(/Duration\n\n(\d\d:\d\d)\s*/img);
+					var flydur = val.match(/Duration\s+([^\(]+)/img);
+					var  flydur1 = ["","","","","","","","",""];
+					if(flydur!=null){
+						for(var i = 0; i < flydur.length; i++ ){
+							flydur1[i] = matchRe(/(\d\d:\d\d)/i,flydur[i],1).trim();
+						}
+					}
+					var flydur = flydur1;
+					//---
+					//var seat = val.match(/^(?:\dPC|\d\dK)\n\n(\w*)$/img);
+					var  seat1 = ["","","","","","","","","","",""];
+
+					var seat = seat1;
+					//---
+					//var meal = val.match(/\s(\w)\n\w+|\t(\w)\n+\w+/img);
+					var  meal1 = ["","","","","","","","",""];
+					var meal = meal1;
+					//---
+					// Airline Iata code
+					var airline_iata = "W3";
+					//alert('here='+val)
+					// Franchise
+					//var franchise = val.match(/\d\d\/\d\d\/\d\d\d\d\s+(\d\d)(?:KG)?\s/img); -- old version
+					var franchise = val.match(/\d\d[A-Z]+\s+(\d\d)(?:KG?)?\s/img);
+					//alert('here2='+NBTKTSEG)s
+					var  franchise1 = ["","","","","","","","",""];
+					if(franchise!=null){
+						for(var i = 0; i < NBTKTSEG; i++ ){
+						//alert('f='+franchise[i])
+							if(franchise[i]==undefined) franchise1[i]=""
+							else
+							franchise1[i] = matchRe(/\d\d[A-Z]+\s+(\d\d)(?:KG?)?\s/i,franchise[i],1).trim();
+						}
+					}
+					/*alert('franch='+franchise1)
+					alert('departuredates='+departuredates)
+					alert('departuretimes='+departuretimes)
+					alert('fabas1='+fabas1)
+					alert('origineairportcode='+origineairportcode)
+						*/
+					//---
+					if(itinerary!=""){
+					   var j=0,k;
+					  for(var i = 0; i < NBTKTSEG; i++ ){
+
+							segment1[i]={class:cl1[i],cabin:clcab1[i],departure_date: departuredates[i],departure_time: departuretimes[i],fare_basis: fabas1[i],leg_price:0,
+										arrival_city:destinationcityname[i], arrival_airport_code:destinationairportcode[i],departure_city: originecityname[i], departure_airport_code:origineairportcode[i],
+										id_airline:airline_iata,code_share:"",arrival_date:arrivaldate[i], arrival_time:arrivaltime[i],flying_time:flydur[i]||"00:00",mileage:0,
+										equipment:"", stopover_city:"", is_smoking: false, meal:meal[i], number_stop:0, franchise: franchise1[i],flight_number:flightnumber[i],
+										departure_terminal:t[i], arrival_terminal:o[i], status:pnrstco1[i],seat:seat[i]||""
+										};
+								j++;
+						}
+						var segment = segment1;
+					}else var segment = [];
+					//---
+
+					// Remark Handle
+					var v = matchRe(/\*(?:\n|\r)([\w\s-\/\.,]+)(?:\n|\r)+\*/im,val,1).trim();
+					//alert('Remark='+v)
+
+					var remark = [];
+					if(v!="") {
+						v = v.replace(/\r/g,' ')
+						//alert("v="+v);
+						remark = [{"data":v,"type":"traveler"}];
+					}
+
+					// Destination Handle
+					if(itinerary!=""){
+						if(doctype!="mco" || doctype!="emd")	var dest = destinationcityname[0]; else dest = "MCO";
+					}else var dest =""
+					// Cabin handler
+					var clcab = "economy";
+					if(classe){
+						if( /G|K|Q|X|Y|T|V|N|M|L|H|B|S|W/.test(classe)) clcab = "economy"
+						else if( /U|E/.test(classe)) clcab = "premium"
+						else if( /Z|I|D|C|J/.test(classe)) clcab = "business"
+						else if( /R|P|F|A/.test(classe)) clcab = "first"
+					}
+					
+					//alert('clcab='+clcab)
+
+					// Airline Name
+					var airline_name = "Arik Air";
+					// Return Time
+					if(doctype!='mco' && doctype!="emd") returntime = arrivaltime[NBTKTSEG-1]; else returntime = "00:00:000";
+					//if(!airline_name) airline_name = "Unknown Airline";
+					//alert('returntime='+returntime)
+					// Building sales
+					var total_price = [0], status = "pending", loyalty_card = "", total_net_collection = [0], product_type = "flight", void_airline = airlinecode, markup = [0];
+					var is_void = false, transtype = "sales", channel = 'non_gds', is_open = false, /*doctype = "eticket",*/ remittance = [0];
+					var penality = 0, totalfeenet  = 0, totaltaxfees = 0, totaltaxcom = 0, totalshare = 0, air_fees = serfee, comrate = -1;
+					var comamount = 0, discamount = 0, booking_oid = "", traveler = 1, exchange_num = "", description = "", abnote = "";
+					var resclass = classe, cabin = clcab, discount_rate = 0, is_incomplete = true, trip_merge_num = "", customer = "", product = "myflight" , supplier = "myflight";
+					var ab_invoice = [[],[],[],[],[],[],[],[],[]],customer_id = [[],[],[],[],[],[],[],[],[]] ,traveler_id = [[],[],[],[],[],[],[],[],[]];
+					var consultant = "" , fullroute = itinerary, in_out = "domestic",reason = "";
+					var totrash = false, errmsg = "", totaltaxfare = 0, pubfare = publicfare, negfare = pubfare;
+					var y = 0;
+
+					
+					// Heck if Exchange NO ADC
+					/*var noadc = matchRe(/(NO\sADC)/im,val,1).trim();
+					if(noadc != ""){
+						pubfare = 0;totaltax=0;discamount = 0;penality = 0;totalfeenet = 0;negfare = [0];comamount = 0;airtax = [];
+					};*/
+					exchange_num = matchRe(/ISSUED\sIN\sEXCHANGE\sFOR\s+:\s\*?\d\d\d\s+(\d+)\*?/im,val,1).trim();
+					//alert('exchange_num='+exchange_num)
+					/*if(noadc != ""){
+						pubfare = 0;totaltax=0;discamount = 0;penality = 0;totalfeenet = 0;negfare = [0];comamount = 0;airtax = [];
+					};*/
+					for(var i=0;i<nbtkt;i++){
+						total_price[i] = parseFloat(pubfare[i]) + parseFloat(totaltax[i]) - parseFloat(discamount) - parseFloat(penality) + parseFloat(totalfeenet);
+						//total_price[i] = parseFloat(total_price[i]).toFixed(2)
+						//alert('total_price='+total_price[i])
+						remittance[i] = parseFloat(pubfare[i]) + parseFloat(totaltax) - parseFloat(comamount);
+						//remittance[i] = parseFloat(remittance[i]).toFixed(2)
+						//alert('remittance='+remittance[i])
+						markup[i] = pubfare[i] - negfare[i];
+						//alert('markup='+markup[i])
+						total_net_collection = parseFloat(comamount) + parseFloat(totalfeenet) + parseFloat(markup[i]);
+						//alert('total_net_collection='+total_net_collection[i])
+						totalfarenet[i] = parseFloat(pubfare[i]) + parseFloat(totaltax);
+						//alert('totalfarenet='+totalfarenet[i])
+						//totalfarenet[i] = parseFloat(totalfarenet[i]).toFixed(2)
+					}
+					/*alert('comamount='+comamount)
+					alert('totalfeenet='+totalfeenet)
+					alert('Start booking build')*/
+					// Building sales
+					var booking = [];
+					var x = 0;
+					var y = 0;
+					if (nbtkt) {
+						var k = nbtkt;
+						while(k){
+						  booking[x] = {
+								source: "email",
+								table: "air_booking",
+								issuing_date: issueddate,
+								commission_type: "rate",
+								total_price:total_price[x],
+								status:status,
+								loyalty_card:loyalty_card,
+								total_net_collection:total_net_collection,
+								product_type:product_type,
+								pnr:pnr,
+								void_airline : void_airline,
+								is_void: is_void,
+								transaction_type: transtype,
+								channel : channel,
+								return_date: returndate,
+								return_time : returntime,
+								is_open: is_open,
+								ticket_number: ticketnumber[x],
+								conjunction_number : conjnumber[x],
+								document_type: doctype[x],
+								published_fare : pubfare[x],
+								negotiated_fare: negfare[x],
+								remittance:remittance[x],
+								markup:markup[x],
+								penality: penality,
+								total_air_taxes: totaltax[x],
+								total_fare_net: totalfarenet[x],
+								total_fees_net: totalfeenet,
+								total_taxes_fees: totaltaxfees,
+								total_taxes_fare: totaltaxfare,
+								total_taxes_commission: totaltaxcom,
+								total_share : totalshare,
+								fee : air_fees[x],
+								commission_rate : comrate,
+								commission_amount : comamount,
+								discount_amount: discamount,
+								fop : fop[y],
+								fop_ref : fopref[y],
+								booking_oid : booking_oid,
+								issuing_oid : issuingoidorpcc,
+								iata : iata,
+								traveler_number: x+1,
+								traveler_name : passenger[x],
+								air_taxes : airtax[x],
+								segment : segment,
+								exchange_number : exchange_num,
+								remark : remark,
+								description : description,
+								notes : abnote,
+								class : resclass,
+								cabin : cabin,
+								discount_rate: discount_rate,
+								is_incomplete : is_incomplete,
+								trip_merged_number : trip_merge_num,
+								id_customer : customer,
+								id_airline : airlinecode,
+								id_currency : cuco,
+								id_product : product,
+								id_supplier : supplier,
+								id_consultant : consultant,
+								id_customer : customer_id[y],
+								id_traveler : traveler_id[y],
+								id_invoice : ab_invoice[y],
+								id_agent_sign : agent,
+								airline_iata : airline_iata,
+								airline : airline_name,
+								destination: dest,
+								itinerary : fullroute,
+								currency_rate : cur_rate,
+								int_dom: in_out,
+								departure_date: departuredate,
+								departure_time: departuretime
+							};
+							x++;k--
+						}
+					}
+					return {
+								TOTRASH: totrash,
+								ERRMSG : errmsg, // Error message when totrash is true
+								BOOKING: booking
+							}
+
+					}
