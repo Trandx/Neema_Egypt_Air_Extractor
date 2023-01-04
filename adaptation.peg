@@ -171,6 +171,8 @@
 
 						/// airbook datas
 
+					return (() =>{
+
 						const booking_data = {
 							"source": "email",
 							"table": "air_booking",
@@ -329,7 +331,7 @@
 
 						//alert(fileDatas)
 
-						const _regex_ticket_number = /Ticket number:\s*(\d{3}\s\d{10})\s-\s(\d*)/im
+						const _regex_ticket_number = /Ticket number:\s*(\d{3})(\s\d{10})\s-\s(\d*)/im
 
 						const _regex_traveler_name = /Passenger:\s*(.+)\(/im
 
@@ -339,7 +341,7 @@
 
 						const _regex_total_price = /Total Amount:.+\:\s(.+)/img
 
-						const _regex_equipment = /Baggage:\s*(\w+)/igm
+						const _regex_franchise = /Baggage:\s*(\w+)/igm
 
 						const _regex_number_stop = /Number of stops:\s*(\w+)/i
 
@@ -351,7 +353,8 @@
 
 						const _regex_form_of_payement = /Form of payment:\s*(\w+)/i
 
-						const _regex_city_and_flight_number = /((?:\w{3,}\s){2,})(?:\s*)((?:\w{3,}\s){2,})(?:\s*)((?:\w{2}\d+))/mg
+						const _regex_city_and_flight_number = /(?<from>(?:\w{3,}\s){1,4})\s*(?<to>(?:\w{3,}\s)+)\s*(?<flight>[A-Z]{2}\d{2,4})/ig 
+						// /((?:\w{3,}\s){2,}INTL)(?:\s*)((?:\w{3,}\s){2,})(?:\s*)((?:\w{2}\d+))/mg
 						///((?:\w{3,}\s){2,})(?:\s*)((?:\w{3,}\s){2,})(?:\s*)((?:\w{2}\d+))(?:\s*)((?:\d{2}:\d{2}))(?:\s*)((?:\d{2}:\d{2}))(?:\s*.+\d{2})((?:\w))/mg
 
 						const _regex_dep_arr_time = /(?:\w{2}\d{3}\s*(.+))(\d{2}:\d{2})/mg
@@ -554,7 +557,7 @@
 							data = data.split("M/IT")
 							data.pop()
 
-							const _reg = /[\s\/-](-\w{3}|\w{3})\s/gm // /[\s\/-](\w{3})\s/igm
+							const _reg = /[\s\/-](\w{3}|\w{3})\s/gm // /[\s\/-](\w{3})\s/igm
 							
 							let itinary = ""
 
@@ -594,22 +597,24 @@
 
 						//get ticket_number
 						const ticker_numb_details = _matcher(fileDatas, _regex_ticket_number, null)
-						booking_data.ticket_number = ticker_numb_details[0]
-						booking_data.conjunction_number = ticker_numb_details[1]
-						booking_data.id_airline  = booking_data.void_airline = ticker_numb_details[0].substring(0,3)
+						//console.log(ticker_numb_details)
+						booking_data.ticket_number = ticker_numb_details[1]
+						booking_data.conjunction_number = ticker_numb_details[2]
+						booking_data.id_airline  = booking_data.void_airline = ticker_numb_details[0]//.substring(0,3)
 							//console.log(booking_data.ticket_number,"conj:", booking_data.conjunction_number);
 
 						// get form of payement 
 						booking_data.fop = _fop(_matcher(fileDatas, _regex_form_of_payement))
 
 						//get total_price
-						booking_data.total_price = isNaN()?_matcher(fileDatas, _regex_total_price):0
+						const total_price = _matcher(fileDatas, _regex_total_price)
+						booking_data.total_price = !isNaN(total_price)?total_price:0
 
 
 						//get total_air_taxes
 						const tb_taxes = _extract_taxes(fileDatas, _regex_taxes)
 
-						booking_data.total_air_taxes =  _compute_taxes(tb_taxes)
+						booking_data.total_air_taxes = isNaN(total_price)?[]:_compute_taxes(tb_taxes)
 							//console.log(tb_taxes, booking_data.total_air_taxes)
 
 						// get id_currency
@@ -642,7 +647,7 @@
 
 						const dep_arr_duration = _dep_arr_duration(fileDatas)
 
-						const equipment = _matcherArray(fileDatas, _regex_equipment)
+						const franchise = _matcherArray(fileDatas, _regex_franchise)
 
 						const dep_arr_city_and_flight_number = _matcherArray(fileDatas, _regex_city_and_flight_number)
 
@@ -674,12 +679,12 @@
 								"arrival_time": dep_arr_time[2*index+1],
 								"flying_time": dep_arr_duration[index],
 								"mileage": 0,
-								"equipment": equipment[index],
+								"equipment": "",
 								"stopover_city": "",
 								"is_smoking": false,
 								"meal": "",
 								"number_stop": 0,
-								"franchise": "",
+								"franchise": franchise[index],
 								"flight_number":  dep_arr_city_and_flight_number[3*index+2],
 								"departure_terminal": "",
 								"arrival_terminal": "",
@@ -712,6 +717,9 @@
 
 
 						return airbook_data
+					})()
+
+						
 
 					
 
