@@ -305,7 +305,7 @@ import fileDatas from "./datas.mjs";
                                             "number_stop": !isNaN(gp.number_stop)?gp.number_stop:0,
                                             "franchise": "",
                                             "flight_number": "", /// update
-                                            "departure_terminal": gp?.arrival_terminal?.trim(),
+                                            "departure_terminal": gp?.departure_terminal?.trim()||0,
                                             "arrival_terminal": gp.arrival_terminal.trim(),
                                             "status": "Holding Confirmed",
                                             "seat": ""
