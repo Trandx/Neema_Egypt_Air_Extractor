@@ -1,0 +1,36 @@
+datas corresponding
+
+"published_fare": 167.50, // Base fare 
+"negotiated_fare": 35821,
+"remittance": 0,
+"markup": 0,
+"penality": 0,
+"total_air_taxes": 51.40, // Taxes/fees
+"total_fare_net": 218.90,
+"total_fees_net": 51.40 + 15.00, // Taxes/fees + Transaction fee
+"total_taxes_fees": 51.40, // Taxes/fees
+"total_taxes_fare": 0,
+"total_taxes_commission": 0,
+"total_share": 0,
+"fee": [1.40, 40.00, 10.00, 15.00], // ...Taxes/fees, Transaction fee
+
+"air_taxes": [
+    {
+        "code": "ZR",
+        "amount": 1.4
+    },
+    {
+        "code": "UL",
+        "amount": 40.00
+    },
+    {
+        "code": "UG",
+        "amount": 10.00
+    }
+],
+
+"pnr": "P4JQ4B", // flydubai booking reference
+"class": "Economy",
+"cabin": "Economy",
+"id_airline": "FZ 620",
+
