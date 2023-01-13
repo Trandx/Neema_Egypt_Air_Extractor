@@ -1,177 +1,8 @@
-	//Name: Egypt Air
-	//Old Keys: /ARIK\sAIR\sLIMITED|Web\s+:\s+(?:http:\/\/)?www\.arikair\.com/im
-	//New Keys: EgyptAir
-	//Date: 27/12/2022  
+import fileDatas from "./datas.mjs";
 
-					//********globals functions********************
-					{
-					var toObject=function (KEY,tab){
-						var v={};
-						if (tab && tab.forEach){
-						  tab.forEach(function(t){
-									  if(t && typeof t =='object'){
-										 for (prop in t)
-								   v[prop]=t[prop];
-									  }
-						  });
-						 }
-						 var ret={}
-						 ret[KEY]=v
-					   return  ret;
-					  }
+    /// airbook datas
 
-					// Destination city extraction
-					var GetDestination = function (tab){
-
-						if(tab.length == 0) return "";
-						if(tab.length == 1) return tab[0];
-						if(tab.length > 1) return tab[1];
-						/*var i = 0,j = 1;
-						var d = tab[i];
-						i++;
-						while (i<= tab.length-1){
-							var str = tab.slice(0,j);
-							if (tabExist(str,tab[i])) return d;
-							d = tab[i];
-							j++; i++
-						}*/
-						return d;
-					}
-
-					// Evaluate RegEx
-
-					var matchRe = function (re,str,index){
-							 var rer=str.match(re)
-					return (rer==null ||rer==undefined)?"":""+rer[index]
-					}
-					var fop = [""], fopref = [""];
-					var NBTKTSEG = 0, totalfarenet =[0], totalfee=0;
-					
-					// Convert Date format ddMMM to yyyy-mm-dd
-					var ConvertDate = function(dat,yr){
-						var  month=matchRe(/\d\d\s*(\w{3})/i,dat,1).trim();
-						//alert('month='+month)
-						switch(month.toUpperCase()){
-							case "JAN":month="00";			   break;
-							case "FEB":month="01";				   break;
-							case "MAR":month="02";				   break;
-							case "APR":month="03";				   break;
-							case "MAY":month="04";				   break;
-							case "JUN":month="05";				   break;
-							case "JUL":month="06";				   break;
-							case "AUG":month="07";				   break;
-							case "SEP":month="08";				   break;
-							case "OCT":month="09";				   break;
-							case "NOV":month="10";				   break;
-							case "DEC":month="11";				   break;
-							default:   month="" ;				   break;
-						}
-						var day = matchRe(/(\d\d)\s*\w{3}/i,dat,1).trim();
-						dat = yr+"-"+(parseFloat(month)+1)+"-"+day;
-						return dat
-						
-					}
-
-					}
-					//
-
-					//**********************************
-
-					START= HEADER_VALUE
-
-					//*********** globals
-					ANY=.
-					ANY_2=$(ANY? ANY?)
-					ANY_3=$(ANY? ANY? ANY?)
-					ANY_4=$(ANY_2 ANY_2)
-					ANY_8=$(ANY_4 ANY_4)
-					ANY_12=$(ANY_8 ANY_4)
-					ANY_14=$(ANY_8 ANY_4 ANY_2)
-					ANY_20=$(ANY_12 ANY_8)
-					ANY_25=$(ANY_12 ANY_8 ANY_4 ANY?)
-					ANY_28=$(ANY_14 ANY_14)
-					ANY_30=$(ANY_28 ANY_2)
-					ANY_40=$(ANY_28 ANY_12)
-					ANY_50= $(ANY_28 ANY_28 ANY_2)
-					ANY_98=$(ANY_28 ANY_28 ANY_28 ANY_14)
-					ANY_99=$(ANY? ANY_28 ANY_28 ANY_28 ANY_14)
-					ANY_100=$(ANY? ANY_99)
-					ANY_150=$(ANY_99 ANY? ANY_50)
-					ANY_200=$(ANY_150 ANY_50)
-					ANY_250=$(ANY_200 ANY_50)
-					ANY_300=$(ANY_250 ANY_50)
-					ANY_350=$(ANY_300 ANY_50)
-					ANY_400=$(ANY_350 ANY_50)
-					ANY_450=$(ANY_400 ANY_50)
-					ANY_500=$(ANY_450 ANY_50)
-					ANY_550=$(ANY_500 ANY_50)
-					ANY_600=$(ANY_550 ANY_50)
-					ANY_650=$(ANY_600 ANY_50)
-					ANY_700=$(ANY_650 ANY_50)
-					ANY_750=$(ANY_700 ANY_50)
-					ANY_800= $(ANY_750 ANY_50)
-					ANY_850= $(ANY_800 ANY_50)
-					ANY_884= $(ANY_800 ANY_50 ANY_25 ANY_8 ANY?)
-					ANY_900= $(ANY_850 ANY_50)
-					ANY_950= $(ANY_900 ANY_50)
-					ANY_1000= $(ANY_950 ANY_50)
-					ANY_1500= $(ANY_950 ANY_50 ANY_500)
-					ANY_2000= $(ANY_1000 ANY_1000)
-					ANY_2100= $(ANY_1000 ANY_1000 ANY_100)
-					ANY_3000= $(ANY_2000 ANY_1000)
-					ANY_15000= $(ANY_3000 ANY_3000 ANY_3000 ANY_3000 ANY_3000)
-					ANY_30000= $(ANY_15000 ANY_15000)
-					ANY_60000= $(ANY_30000 ANY_30000)
-					ANY_120000= $(ANY_60000 ANY_60000)
-					ANY_240000= $(ANY_120000 ANY_120000)
-					cr = "\n"
-					delim1 = "This document is automatically generated."
-					delim2 = "Please do not respond to this mail."
-					delim3 = (" FROM " / " DE ")
-					delim4 = ("/TO        " / "/À           ")
-					delim5 = (" AT CHECK-IN, PLEASE SHOW A PICTURE IDENTIFICATION AND THE DOCUMENT YOU GAVE"/ " A L'ENREGISTREMENT, VOUS DEVREZ PRESENTER UNE PIECE D'IDENTITE AVEC")
-					delim6 = (" FOR REFERENCE AT RESERVATION TIME" / " PHOTOGRAPHIE, ET LE DOCUMENT DONT VOUS AVEZ DONNE LA REFERENCE A LA")
-					delim7 = ("FLIGHT(S) CALCULATED AVERAGE CO2 EMISSIONS IS 1435.71 KG/PERSON" / "L'ÉMISSION CO2 MOYENNE CALCULÉE EST")
-					delim8 = "SOURCE :"
-					delim9= "\f"
-
-					/*******************************************/
-
-					//HEADER Block
-
-					HEADER= header:("" HEADER_VALUE){return toObject("",header)}
-
-					//HEADER_LABEL="Return"{return {"label":"Return"}}
-
-					HEADER_VALUE = val:ANY_240000 {
-					 	var is_html = val.match(/<html>/img);
-						if(is_html){
-							// Convert HTML to TEXT
-							val = val.replace(/<tr>/g,'<br>');
-							val = val.replace(/<br>\s?/g,'\r');
-							val = val.replace(/<\/?b>/g,'*');
-							val = val.replace(/<\/font>/g,' ');
-							val = val.replace(/&gt;/g,'');
-							val = val.replace(/&lt;/g,'');
-							val = val.replace(/&nbsp;/g,' ');
-							val = val.replace(/#.*\n\n/g,'');
-							val = val.replace(/<[^>]+>/g,'');
-							val = val.replace(/^\s+([\w\*])/gm,'$1');
-							val = val.replace(/(\w)\s+$/gm,'$1');
-							val = val.replace(/\r\r\r/g,'');
-						}
-						val = val.replace(/\*/g,'');
-						val = val.replace(/\?/g,'');
-						val = val.replace(/\|/g,'');
-						val = val.replace(/^\s*(\w)/g,'$1');
-
-						fileDatas = val
-
-						//import fileDatas from "./datas.mjs";
-
-						/// airbook datas
-
-                    return (() =>{
+    (() =>{
 
         const booking_data = {
             "source": "email",
@@ -557,8 +388,8 @@
                             "number_stop": stop_over[index]?1:0,
                             "franchise": +(franchise[index]||0+franchise[index+1]||0)+" kg",
                             "flight_number": num, /// update
-                            "departure_terminal": departure_terminal,
-                            "arrival_terminal": arrival_terminal,
+                            "departure_terminal": departure_terminal||"",
+                            "arrival_terminal": arrival_terminal||"",
                             "status": "Holding Confirmed",
                             "seat": ""
                         },)
@@ -587,7 +418,7 @@
 
 
                 //const flight_number = _matcherArray(fileDatas, _regex_flight_number);
-
+   
                 // [booking_data.airline_iata, booking_data.id_airline] = flight_number?.trim().split(" ")
 
                 // console.log(booking_data);
@@ -613,5 +444,3 @@
             
 
     })()
-
-				}

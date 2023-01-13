@@ -127,14 +127,19 @@ import fileDatas from "./datas.mjs";
                             ///total\s*\w{3}\s(?<total_fare_net>[\d.]*).+fee\s\w*\s()/gm
                             //fees\s(?<taxe_fee>.+)\s*[\s\w]+(?<issuing_date>\d{2}\s\w*\s\d{4})
 
-                            const _regex_money = /total\s*(?<id_currency>\w{3})\s(?<total_fare_net>[\d.]*).+fee\s\w*\s(?<total_taxes_commission>\w*.\w*)\s*.+total\s*\w{3}\s(?<total_price>\w*.\w*)[.+\s\w]*fare\s*\w{3}\s(?<published_fare>\w*.\w*)[.+\s\w:/;]*fees\s(?<taxe_fee>.+)\s*[\s\w]+(?<issuing_date>\d{2}\s\w*\s\d{4})/gm
+                            const _regex_money = /total\s*(?<id_currency>\w{3})\s(?<total_fare_net>[\d.]*).+fee\s\w*\s(?<total_fees_net>\w*.\w*)\s*.+total\s*\w{3}\s(?<total_price>\w*.\w*)[.+\s\w]*fare\s*\w{3}\s(?<published_fare>\w*.\w*)[.+\s\w:/;]*fees\s(?<taxe_fee>.+)\s*[\s\w]+(?<issuing_date>\d{2}\s\w*\s\d{4})/gm
 
-                            const _regex_flight = /Flight\s*(?<id_airline>[\w\s]+)[)\s]*(?<class>\w*)[\s\w]*(?<departure_date>\d{2}\s\w*\s\d{4})[,\s\w]*(?<arrival_date>\d{2}\s\w*\s\d{4})[,\s\w()]*(?<departure_time>(\d{2}:\d{2}))[\s-]*(?<flying_time>[\w\s]*)[\s-]*(?<number_stop>.+)\s*(?<arrival_time>\d{2}:\d{2}).+\s*(?<departure_city>\w+)\s*(?<arrival_city>\w*)[\s\w(]*\)\s*\w*\s*(?<departure_airport_code>(?:\w{3,}\s)+)\s*(?<arrival_airport_code>(?:\w{3,}\s)+).+\s*?(?:Terminal\s*(?<arrival_terminal>\w))/gm
+                            const _regex_flight = /Flight\s*(?<flight_number>[\w\s]+)[)\s]*(?<class>\w*)[\s\w]*(?<departure_date>\d{2}\s\w*\s\d{4})[,\s\w]*(?<arrival_date>\d{2}\s\w*\s\d{4})[,\s\w()]*(?<departure_time>(\d{2}:\d{2}))[\s-]*(?<flying_time>[\w\s]*)[\s-]*(?<number_stop>.+)\s*(?<arrival_time>\d{2}:\d{2}).+\s*(?<departure_city>\w+)\s*(?<arrival_city>\w*)[\s\w(]*\)\s*\w*\s*(?<departure_airport_code>(?:\w{3,}\s)+)\s*(?<arrival_airport_code>(?:\w{3,}\s)+).+\s*?(?:Terminal\s*(?<arrival_terminal>\w))/gm
 
                             const _regex_traveler_name = /details\s*(.+)/gm
 
                             const _regex_pnr = /Your\sbooking\sis\sconfirmed\s*(.+)/gm
+
+                            const _regex_iata = /IATA\sNo.\s(?<iata>\w*)/gmi
+
+                            const _regex_issuing_oid = /Invoice:\s*\s(?<issuing_oid>[\s\w]*\s)\s/gmi
     
+                            const _regex_meal = ""
                             
                             // const matchData=_regex_flight.exec(fileDatas)
 
@@ -195,7 +200,7 @@ import fileDatas from "./datas.mjs";
                                     let fop = null;
                                     switch(_fop.toUpperCase()){
                                         case "CASH": fop = "cash";break;
-                                        case "CC": fop = "nonref";break;
+                                        case "CC": fop = "credit_card";break;
                                         case "CREDIT": fop = "nonref";break;
                                         case "CHECK": fop = "check";break;
                                         default : fop = "nonref";
@@ -279,7 +284,7 @@ import fileDatas from "./datas.mjs";
 
                                         itinerary += gp.departure_city.trim()+" "+gp.arrival_city.trim()+" ";
 
-                                        [airline_iata , id_airline] = gp.id_airline.trim().split(" ")
+                                        [airline_iata , id_airline] = gp.flight_number.trim().split(" ")
 
                                         segment.push({
                                             "class": gp.class.trim(),
@@ -367,13 +372,14 @@ import fileDatas from "./datas.mjs";
                                 const {air_taxes, data, total_air_taxes, fee} = _formatTaxes()
 
                                 booking_data.total_fare_net = data.total_fare_net
-                                booking_data.total_taxes_commission = data.total_taxes_commission
+                                //booking_data.total_taxes_commission = data.total_taxes_commission
                                 booking_data.total_price = data.total_price
                                 booking_data.published_fare = data.published_fare
                                 booking_data.issuing_date = _GoodFormatDate(data.issuing_date)
                                 booking_data.air_taxes = air_taxes
                                 booking_data.total_air_taxes = total_air_taxes //
                                 booking_data.fee = fee
+                                booking_data.total_fees_net = data.total_fees_net
                                 booking_data.segment = segment
                                 booking_data.itinerary = itinerary.trim()
                                 booking_data.destination = segment[segment.length-1]["arrival_city"]
@@ -391,12 +397,24 @@ import fileDatas from "./datas.mjs";
                                 booking_data.arrival_airport_code = segment[segment.length-1]["arrival_airport_code"]
                                 booking_data.arrival_city = segment[segment.length-1]["arrival_city"]
 
+                                booking_data.class = segment[0]["class"]
+                                booking_data.cabin = segment[0]["cabin"]
+                                
+                                booking_data.meal = _matcherArray(fileDatas, _regex_meal)// to be updated
+                                booking_data.iata = _matcherArray(fileDatas, _regex_iata)// No .xxxx
+                                booking_data.issuing_oid = _matcherArray(fileDatas, _regex_issuing_oid) // WIDE TRavel Deals
+                                booking_data.booking_oid = _matcherArray(fileDatas, _regex_issuing_oid) // WIDE TRavel Deals
+
+                                booking_data.int_dom = "international"
+                                booking_data.airline = 141
+
                                 booking_data.traveler_name = _matcherArray(fileDatas, _regex_traveler_name)
 
                                 booking_data.pnr = _matcherArray(fileDatas, _regex_pnr)
 
                                 booking_data.id_airline = id_airline
                                 booking_data.airline_iata = airline_iata 
+                                booking_data.flight_number = airline_iata+" "+id_airline
 
                                 console.log(booking_data);
 
