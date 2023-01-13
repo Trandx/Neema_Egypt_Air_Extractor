@@ -161,9 +161,9 @@
 							val = val.replace(/\r\r\r/g,'');
 						}
 						//val = val.replace(/\*/g,'');
-						val = val.replace(/\?/g,'');
-						val = val.replace(/\|/g,'');
-						val = val.replace(/^\s*(\w)/g,'$1');
+						//val = val.replace(/\?/g,'');
+						//val = val.replace(/\|/g,'');
+						//val = val.replace(/^\s*(\w)/g,'$1');
 
 						fileDatas = val
 
@@ -385,7 +385,7 @@
     const _cabin = (t_class) => {
         const reg_ob = {
             "premium": /U|E/,
-            "economy": /G|K|Q|X|Y|T|V|N|M|L|H|B|S|W/,
+            "economy": /G|K|Q|X|Y|T|V|N|M|L|H|B|S|W|O/,
             "business": /Z|I|D|C|J/,
             "first": /R|P|F|A/
         }
