@@ -1,0 +1,337 @@
+---------- Forwarded message ---------
+From: <kindredaccounts@kindredtravels.com.ng>
+Date: Thu, Apr 25, 2024 at 11:47 AM
+Subject: ibom Air
+To: <trips@airbooks.co.za>
+
+
+
+
+*11M8U1*
+
+
+
+*Thanks for your booking. Your flights are confirmed and your itinerary is
+below.*
+
+
+
+*Electronic Ticket Passenger Itinerary Receipt*
+
+
+
+
+
+
+
+
+*Passenger Name*
+
+
+
+*Booking Reference*
+
+
+
+*Ticket Number*
+
+
+
+*Issued By*
+
+
+
+*7042400000760*
+
+
+
+*QI QUO IN ISO:NG 25APR2024 12345678*
+
+
+
+
+
+
+
+
+*Flight 1 - Abuja (ABV) to Lagos (LOS)*
+
+
+
+*CARRIER CODE*     *FLIGHT NO.*            *DEP. TIME*
+*ARR. TIME*
+
+
+
+*QI*
+
+*559*
+
+*19:55*
+
+
+
+
+
+*21:05*
+
+
+
+
+
+
+
+
+
+
+
+
+
+*Abuja (ABV)*
+
+
+
+
+
+*Lagos (LOS)*
+
+
+
+
+
+*ABUJA INT*
+
+
+
+
+
+*MURTALA M*
+
+
+
+
+
+*28 Apr 2024*
+
+
+
+
+
+*28 Apr 2024*
+
+*REZ. CLASS*
+
+
+
+*FARE BASIS*
+
+*FLIGHT DURATIONSEAT*
+
+*BAG*
+
+*DEP TERMINALARR TERMINALTKT ST*
+
+*ticket.res.book.design.code.M?*
+
+*MOWDOM*
+
+*1HRS 10MINS*
+
+*20 KG*
+
+*O*
+
+
+
+
+
+*Flight 2 - Lagos (LOS) to Abuja (ABV)*
+
+
+
+*CARRIER CODE*     *FLIGHT NO.*            *DEP. TIME*
+*ARR. TIME*
+
+
+
+*QI*
+
+*552*
+
+*11:00*
+
+
+
+
+
+*12:15*
+
+
+
+
+
+
+
+
+
+
+
+
+
+*Lagos (LOS)*
+
+
+
+
+
+*Abuja (ABV)*
+
+
+
+
+
+*MURTALA M*
+
+
+
+
+
+*ABUJA INT*
+
+
+
+
+
+*01 May 2024*
+
+
+
+
+
+*01 May 2024*
+
+*REZ. CLASS*
+
+
+
+*FARE BASIS*
+
+*FLIGHT DURATIONSEAT*
+
+*BAG*
+
+*DEP TERMINALARR TERMINALTKT ST*
+
+*ticket.res.book.design.code.M?*
+
+*MOWDOM*
+
+*1HRS 15MINS*
+
+*20 KG*
+
+*O*
+
+
+
+*(1) OK = confirmed (2) NVB = Not Valid Before (3) NVA = Not Valid After
+(4) Each passenger can check-in a specific amount of baggage at no extra
+cost as indicated in this column.*
+
+*Fare Breakdown*
+
+*11M8U1*
+
+
+
+*Electronic Ticket Passenger Itinerary Receipt*
+
+*Name*
+
+*UCHE / EMMANUEL (26APR85)*
+
+*Ticket Number*
+
+*7042400000760*
+
+*Form of payment*
+
+*CC;539983******5085*
+
+*FARE*
+
+*₦ 29,000.00*
+
+*TAXES*
+
+*₦ 9,000.00 QT ₦ 12,000.00 NG*
+
+*OTHER FEE*
+
+
+
+*SURCHARGES*
+
+*₦ 240,000.00 YQ*
+
+*TOTAL*
+
+*₦ 290,000.00*
+
+*Issuing Airline And Date*
+
+*invoice.company.QI? / 25APR24*
+
+*IATA Number*
+
+*12345678*
+
+*ENDORSEMENT/RESTRICTION*
+
+*ONE WAY*
+
+*FARE CALCULATION AREA*
+
+*ABV QI LOS12.83 QI ABV9.22NUC22.05END ROE1317.000000*
+
+
+
+
+
+*Important Information*
+
+
+
+
+
+*${cms.text-rules.invoiceImportantInfo}*
+
+
+
+*${cms.text-rules.seatDesc}*
+
+
+
+
+
+*Emmanuel Jibrin*
+
+Accountant
+
+  <http://www.kindredtravels.com/>
+
+
+
+<https://www.instagram.com/kindredtravelsandtours/>
+<https://fb.com/KindredTravelsandTours/>
+<https://twitter.com/kindredtravels>
+
+
+
+    +234 9 291 6453
+
+   emmanuel.jibrin@kindredtravels.com.ng
+
+   www.kindredtravels.com.ng
+
+<http://www.kindredtravels.com/>

@@ -1,0 +1,104 @@
+---
+TOTRASH: false
+ERRMSG: ''
+BOOKING:
+- issuing_date: 08 AUG 23
+  commission_type: ''
+  total_price: '82,000.00'
+  status: 'OK'
+  loyalty_card: ''
+  total_net_collection: ''
+  product_type: ''
+  pnr: '14FA9M'
+  channel: ''
+  return_date: "/_"
+  return_time: "/_"
+  is_open: ''
+  ticket_number: '7102401205830'
+  conjunction_number: ''
+  document_type: ''
+  published_fare: ''
+  negotiated_fare: ''
+  remittance: ''
+  markup: ''
+  penality: ''
+  total_air_taxes: ''
+  total_fare_net: ''
+  total_fees_net: ''
+  total_taxes_fees: ''
+  total_taxes_fare: ''
+  total_taxes_commission: ''
+  total_share: ''
+  fee: []
+  commission_rate: ''
+  commission_amount: ''
+  discount_amount: ''
+  fop: ''
+  fop_ref: ''
+  booking_oid: ''
+  issuing_oid: ''
+  iata: '00020086'
+  traveler_number: ''
+  traveler_name: Passenger
+  air_taxes:
+  - code: QT
+    amount: '2,000.00'
+  - code: NG
+    amount: '43,000.00'
+  - code: YQ
+    amount: '43,000.00'
+  segment: 'ELECTRONIC TICKET RECEIPT'
+  _segment:
+  - class: 'S'
+    flight_number: '7152'
+    cabin: 'business'
+    departure_date: '10 AUG 2023 '
+    departure_time: '10:35'
+    fare_basis: 'SOWDOM'
+    leg_price: ''
+    arrival_city: 'Owerri'
+    arrival_airport_code: 'QOW'
+    departure_city: 'Abuja'
+    departure_airport_code: 'ABV'
+    id_airline: ''
+    code_share: ''
+    arrival_date: '10 AUG 2023'
+    arrival_time: '11:40'
+    flying_time: 
+    mileage: ''
+    equipment: '15 KG'
+    stopover_city: ''
+    is_smoking: ''
+    meal: ''
+    number_stop: Number of stops
+    franchise: ''
+    departure_terminal: ''
+    arrival_terminal: ''
+    status: 'OK'
+    seat: '26A'
+  exchange_number: ''
+  remark: []
+  description: ''
+  notes: ''
+  class: S
+  cabin: 'business'
+  discount_rate: 0
+  is_incomplete: true
+  trip_merged_number: ''
+  id_customer: []
+  id_airline: 725
+  id_currency: NGN
+  id_product: myflight
+  id_supplier: myflight
+  id_consultant: ''
+  id_traveler: []
+  id_invoice: []
+  id_agent_sign: '00'
+  airline_iata: W3
+  airline: 'AIR PEACE'
+  destination: LOS
+  itinerary: "ABV CBQ"
+  currency_rate: 1
+  int_dom: 'DOMESTIC'
+  departure_date: '2018-4-14'
+  departure_time: '11:15'

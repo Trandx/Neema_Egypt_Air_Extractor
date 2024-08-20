@@ -1,0 +1,16 @@
+    # var regex_classe = [
+    # 	/\s\(([A-Z])\)/im,
+    # 	/^(\w)\n\n\t\w/im,
+    # 	/ticket.res.book.design.code.(?<class>\w)/img,
+    # ];
+
+    # var classe ="";
+
+    # for( var i = 0; i < regex_classe.length; i++) {
+    # 	var classe = matchRe(regex_classe[i],val,1).trim();
+    # 	if(classe != "") {
+    # 		return;
+    # 	}
+    # }
+
+    alert('classe:'+classe)

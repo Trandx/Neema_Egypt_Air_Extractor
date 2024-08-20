@@ -1,0 +1,78 @@
+14RTFN
+P4 LOS IN ISO:NG 3SEP2023 12345678 INTERNET /A
+7102401412565
+14RTFN
+OKAFOR / CHIJIOKE
+Passenger
+Booking Reference Number (PNR)
+Ticket Number
+Issued By
+Electronic Ticket Passenger Itinerary Receipt
+(1) OK = confirmed (2) NVB = Not Valid Before (3) NVA = Not Valid After (4) Each passenger can check-in a specific amount of baggage at no extra cost as indicated in this column.
+Flight 1 - Lagos (LOS) to Portharcourt (PHC)
+CARRIER CODEFLIGHT NO
+P47194
+DEPART
+ARRIVE
+14:0515:15
+Lagos (LOS)Portharcourt (PHC)
+03 SEP 202303 SEP 2023
+MURTALA M
+PORT HARC
+REZ. CLASSTICKET STATUS
+(1)
+FARE BASISNVB
+(2)
+NVA
+(3)
+SEATTKT SEATBAG
+(4)
+DEP TERMINALARR TERMINAL
+W15 KGFOK03SEP2411FWOWDOM
+Receipt
+Name
+Ticket Number
+Fare
+Other Fees
+Total Amount
+Issuing Airline And Date
+IATA Number
+Endorsements/Restrictions(s)
+OKAFOR / CHIJIOKE
+7102401412565
+₦ 43,300.00
+₦ 100,000.00
+AIR PEACE / 03SEP23
+12345678
+DOMESTIC
+Form of payment
+CREDIT CARD ****************
+Taxes
+₦ 2,000.00 QT      ₦ 4,700.00 NG
+Fare Calculation
+LOS P4 PHC54.17NUC54.17END ROE799.900000
+Surcharges
+₦ 50,000.00 YQ
+1-All passengers must present a valid photo identification at physical sales, check-in and boarding gates.
+2-Physical check-in begins:
+  - 3 hours (on Domestic Flights) prior to the scheduled flight departure and closes 45 minutes before scheduled flight departure.
+  - 4 hours (on Regional Flights) prior to the scheduled flight departure and closes 60 minutes before scheduled flight departure.
+  - 6 hours (on International Flights) prior to the scheduled flight departure and closes 75 minutes before scheduled flight departure.3-Baggage Allowance on Domestic Flights: 15kg in Economy Class and 30kg in Business. Baggage in excess of the specified weight is subject to a fee of N1000 per kilogram to be paid at the Airport.
+Baggage Allowance on Regional Flights: 30kg in Economy Class and 40kg in Business Class EXCEPT FOR DAKAR which is 42kg in Economy Class and 50kg in Business Class. Baggage in excess of the
+specified weight is subject to a fee of $6 per kilogram to be paid at the Airport.
+Baggage Allowance on International Flights: 2 pieces of 23kg each in Economy Class and 2 piece of 32kg in Business/First class except for Dubai which is 2 piece of 25kg each in Economy Class and 2
+piece of 32kg in Business/First class. Baggage in excess of the specified weight is subject to a fee of $100 per bag to be paid at the Airport for Johannesburg and $150 per bag to be paid at the Airport
+for Dubai.
+4-Infants pay 10% of the adult ticket fare in all Classes and is entitled to a maximum of 5kg of luggage in either Economy class or Business Class. This infant luggage can be checked-in or used as carry on
+Cabin baggage.
+5-Each Adult or Child passenger is allowed to carry only one piece of hand luggage weighing not more than 6kg in Economy class and 10kg in Business class with size not exceeding 45x33x20 cm in
+addition to a carry-on purse or handbag or Laptop.
+6-All cancellations modifications and No-show charges will be as per the fare conditions for the selected fare class.
+7-Pregnant women are required to present a medical report certifying them fit to fly while pregnancy carriage limit on Air Peace flights is 28 weeks.
+8-All voluntary refund request on refundable tickets will be honoured less 25% of the original ticket fare. Economy Non- Flexi tickets are Non Refundable.
+9-Full fare Paid Tickets are valid for 1 year but are subject to modification fees if booked flights are not cancelled before date of departure.
+10-A Book On Hold Transaction fee (between N0 - N1000 or 0 GHS - 10 GHS) per passenger (excluding infants) applies. Exact amount depends on the time when reservation was made and the time of
+flight departure
+11-Go with your Reservation number to any bank branch or www.quickteller.com  to make payment.
+12-Payment MUST be made before the expiration of your reservation. Please make allowance for 30 minutes minimum, before the expiration time, for the bank to process your payment.
+13-For other terms and conditions please visit www.flyairpeace.com/Terms and Conditions

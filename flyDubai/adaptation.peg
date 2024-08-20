@@ -366,63 +366,141 @@
         }
 
         // function to get issuing date
-            // converte month
+        // converte month
+        
+        const _convertMonthToInt = function(month){
+            //alert('month='+month)
+            //console.log(month);
+            //console.log(month);
             
-            const _convertMonthToInt = function(month){
-                //alert('month='+month)
-                //console.log(month);
-                //console.log(month);
+            switch(month = month.trim().toUpperCase()){
                 
-                switch(month = month.trim().toUpperCase()){
-                    
-                case "JANUARY": month = "01";     break;			 
-                case "FEBRUARY": month = "02";    break;			 
-                case "MARCH": month = "03";   break;	
-                case "APRIL": month = "04";   break;	
-                case "MAY": month = "05";     break;	
-                case "JUNE": month = "06";    break;	
-                case "JULY": month = "07";    break;	
-                case "AUGUST": month = "08";  break;	
-                case "SEPTEMBER": month = "09";   break;	
-                case "OCTOBER": month = "10";     break;	
-                case "NOVEMBER": month = "11";    break;	
-                case "DECEMBER": month = "12";    break;	
+            case "JANUARY": month = "01";     break;			 
+            case "FEBRUARY": month = "02";    break;			 
+            case "MARCH": month = "03";   break;	
+            case "APRIL": month = "04";   break;	
+            case "MAY": month = "05";     break;	
+            case "JUNE": month = "06";    break;	
+            case "JULY": month = "07";    break;	
+            case "AUGUST": month = "08";  break;	
+            case "SEPTEMBER": month = "09";   break;	
+            case "OCTOBER": month = "10";     break;	
+            case "NOVEMBER": month = "11";    break;	
+            case "DECEMBER": month = "12";    break;	
 
+            }
+            return month;
+        }
+        // converte date
+        const _convertYearToFourChars = function(year){
+            return year.length==2?"20"+year:year
+            //return _year
+        }
+        
+        const _GoodFormatDate = (date) =>{
+            date = date.split(" ");
+            return _convertYearToFourChars(date[2])+"-"+_convertMonthToInt(date[1])+"-"+date[0];
+        }
+
+        const _formatTaxes = () =>{
+            m =_regex_money.exec(fileDatas)
+            
+            const data = m.groups;
+
+            console.log(data);
+
+            const air_taxes = [];
+
+            const taxe_fee = data?.taxe_fee.replace(_regex_air_taxes, " ").split(" ")
+
+            const fee = []
+
+            for (let i = 0; i < (taxe_fee.length-1)/2; i++) {
+
+                fee.push(taxe_fee[2*i+1])
+
+                air_taxes.push(
+                    {
+                        "code": taxe_fee[2*i],
+                        "amount": taxe_fee[2*i+1]
+                    }
+                )
+                
+            }
+
+            return {
+                        air_taxes: air_taxes,
+                        data: data,
+                        total_air_taxes: taxe_fee[taxe_fee.length-1],
+                        fee: fee,
+                    }
+        }
+
+        /// build BOOKING DATA
+        return (() => {
+
+            booking_data.traveler_name = _matcherArray(fileDatas, _regex_traveler_name)
+            booking_data.pnr = _matcherArray(fileDatas, _regex_pnr)
+
+            booking_data.id_currency = _matcherArray(fileDatas, _regex_id_currency)
+            
+            booking_data.published_fare = _matcherArray(fileDatas, _regex_published_fare) 
+            booking_data.iata = _matcherArray(fileDatas, _regex_iata)
+            booking_data.total_fees_net = _matcherArray(fileDatas, _regex_total_fees_net)
+            booking_data.total_fare_net = _matcherArray(fileDatas, _regex_total_fare_net)
+            booking_data.total_price = _matcherArray(fileDatas, _regex_total_price)
+
+            booking_data.booking_oid = _matcherArray(fileDatas, _regex_booking_oid)
+            booking_data.issuing_oid = _matcherArray(fileDatas, _regex_issuing_oid)
+
+            booking_data.fop_ref = _matcherArray(fileDatas, _regex_fop_ref)
+            booking_data.issuing_date = _GoodFormatDate(_matcherArray(fileDatas, _regex_issuing_date))
+
+            
+
+            // method to update segment, air_taxes and so on
+
+            const _getTerminal = function(){
+                const terminal_data = _regex_terminal.exec(fileDatas).groups
+
+                return {
+                    departure_terminal: terminal_data.terminal_from??terminal_data.terminal_from_only,
+                    arrival_terminal:  terminal_data.terminal_to??terminal_data.terminal_to_only
                 }
-                return month;
-            }
-            // converte date
-            const _convertYearToFourChars = function(year){
-                return year.length==2?"20"+year:year
-                //return _year
-            }
-            
-            const _GoodFormatDate = (date) =>{
-                date = date.split(" ");
-                return _convertYearToFourChars(date[2])+"-"+_convertMonthToInt(date[1])+"-"+date[0];
             }
 
-            const _formatTaxes = () =>{
-                m =_regex_money.exec(fileDatas)
+            // const _getFlightNumber = function(){
+
+            //     const _regex_flight_number_data = _regex_flight_number.exec(fileDatas).groups.flight_number
                 
-                const data = m.groups;
+            //     const [airline_iata , id_airline] = _regex_flight_number_data.trim().split(" ")
 
-                console.log(data);
+            //     return {
+            //         airline_iata: airline_iata,
+            //         id_airline: id_airline
+            //     }
+            // }
+
+            const { air_taxes, total_air_taxes, fee} = (() =>{
+                
+                const  taxes_fees_data =_regex_taxes_fees.exec(fileDatas).groups.taxes_fees
+
+                console.log(taxes_fees_data);
 
                 const air_taxes = [];
 
-                const taxe_fee = data?.taxe_fee.replace(_regex_air_taxes, " ").split(" ")
+                const taxes_fees = taxes_fees_data?.replace(/\s*\w{3}\s|\s;\s/gm, " ").split(" ")
 
                 const fee = []
 
-                for (let i = 0; i < (taxe_fee.length-1)/2; i++) {
+                for (let i = 0; i < (taxes_fees.length-1)/2; i++) {
 
-                    fee.push(taxe_fee[2*i+1])
+                    fee.push(taxes_fees[2*i+1])
 
                     air_taxes.push(
                         {
-                            "code": taxe_fee[2*i],
-                            "amount": taxe_fee[2*i+1]
+                            "code": taxes_fees[2*i],
+                            "amount": taxes_fees[2*i+1]
                         }
                     )
                     
@@ -430,167 +508,89 @@
 
                 return {
                             air_taxes: air_taxes,
-                            data: data,
-                            total_air_taxes: taxe_fee[taxe_fee.length-1],
+                            total_air_taxes: taxes_fees[taxes_fees.length-1],
                             fee: fee,
                         }
-            }
-
-            /// build BOOKING DATA
-            return (() => {
-
-                booking_data.traveler_name = _matcherArray(fileDatas, _regex_traveler_name)
-                booking_data.pnr = _matcherArray(fileDatas, _regex_pnr)
-
-                booking_data.id_currency = _matcherArray(fileDatas, _regex_id_currency)
+            })()
                 
-                booking_data.published_fare = _matcherArray(fileDatas, _regex_published_fare) 
-                booking_data.iata = _matcherArray(fileDatas, _regex_iata)
-                booking_data.total_fees_net = _matcherArray(fileDatas, _regex_total_fees_net)
-                booking_data.total_fare_net = _matcherArray(fileDatas, _regex_total_fare_net)
-                booking_data.total_price = _matcherArray(fileDatas, _regex_total_price)
+            const {segment }  = (() => {
 
-                booking_data.booking_oid = _matcherArray(fileDatas, _regex_booking_oid)
-                booking_data.issuing_oid = _matcherArray(fileDatas, _regex_issuing_oid)
+                let m = null
+                let segment = []
 
-                booking_data.fop_ref = _matcherArray(fileDatas, _regex_fop_ref)
-                booking_data.issuing_date = _GoodFormatDate(_matcherArray(fileDatas, _regex_issuing_date))
-
+                const class_cabin = _matcherArray(fileDatas, _regex_class_cabin)
+                const flight_number = _matcherArray(fileDatas, _regex_flight_number)
+                const departure_arrival_date = _matcherArray(fileDatas, _regex_departure_arrival_date)
+                const departure_arrival_time = _matcherArray(fileDatas, _regex_departure_arrival_time)
+                const departure_arrival_city = _matcherArray(fileDatas, _regex_departure_arrival_city)
+                const meal = _matcherArray(fileDatas, _regex_meal)
+                const flying_time = _matcherArray(fileDatas, _regex_flying_time) 
+                const departure_airport_code = _matcherArray(fileDatas, _regex_departure_airport_code)
+                const franchise = _matcherArray(fileDatas, _regex_franchise)
+                const stop_over = _matcherArray(fileDatas, _regex_stop_over)
                 
-
-                // method to update segment, air_taxes and so on
-
-                const _getTerminal = function(){
-                    const terminal_data = _regex_terminal.exec(fileDatas).groups
-
-                    return {
-                        departure_terminal: terminal_data.terminal_from??terminal_data.terminal_from_only,
-                        arrival_terminal:  terminal_data.terminal_to??terminal_data.terminal_to_only
-                    }
+                for (let index = 0; index < flight_number.length; index++) {
+                    const num = flight_number[index];
+                    
+                    const {departure_terminal, arrival_terminal} = _getTerminal()
+                    segment.push({
+                        "class": class_cabin[index],
+                        "cabin": class_cabin[index],
+                        "departure_date": _GoodFormatDate(departure_arrival_date[2*index]),
+                        "departure_time":departure_arrival_time[2*index]+":"+departure_arrival_time[2*index],
+                        "fare_basis": "",
+                        "leg_price": 0,
+                        "arrival_city": departure_arrival_city[2*index+1],
+                        "arrival_airport_code": departure_airport_code[2*index],
+                        "departure_city": departure_arrival_city[2*index],
+                        "departure_airport_code": departure_airport_code[2*index+1],
+                        "id_airline": flight_number[index].split(" ")[1], // update
+                        "code_share": "",
+                        "arrival_date": _GoodFormatDate(departure_arrival_date[2*index+1]),
+                        "arrival_time": departure_arrival_time[2*index+1]+":"+departure_arrival_time[2*index+1],
+                        "flying_time": flying_time[index],
+                        "mileage": 0,
+                        "equipment": "",
+                        "stopover_city": stop_over[index]||"",
+                        "is_smoking": false,
+                        "meal": meal[index],
+                        "number_stop": stop_over[index]?1:0,
+                        "franchise": +(franchise[index]||0+franchise[index+1]||0)+" kg",
+                        "flight_number": num, /// update
+                        "departure_terminal": departure_terminal,
+                        "arrival_terminal": arrival_terminal,
+                        "status": "Holding Confirmed",
+                        "seat": ""
+                    },)
+                
                 }
 
-                // const _getFlightNumber = function(){
-
-                //     const _regex_flight_number_data = _regex_flight_number.exec(fileDatas).groups.flight_number
-                    
-                //     const [airline_iata , id_airline] = _regex_flight_number_data.trim().split(" ")
-
-                //     return {
-                //         airline_iata: airline_iata,
-                //         id_airline: id_airline
+                booking_data.airline_iata = flight_number[0].split(" ")[0]
+                // const taxes_fees_data =   _matcherArray(fileDatas, _regex_total_taxes_fees)
+                // booking_data.total_taxes_fees = ""
+                // booking_data.fee = []
+                // booking_data.air_taxes.push(
+                //     {
+                //         "code": taxe_fee[2*i],
+                //         "amount": taxe_fee[2*i+1]
                 //     }
-                // }
+                // )
 
-                const { air_taxes, total_air_taxes, fee} = (() =>{
+                return {
+                    segment: segment
                     
-                   const  taxes_fees_data =_regex_taxes_fees.exec(fileDatas).groups.taxes_fees
+                }
 
-                    console.log(taxes_fees_data);
+            })()
 
-                    const air_taxes = [];
-
-                    const taxes_fees = taxes_fees_data?.replace(/\s*\w{3}\s|\s;\s/gm, " ").split(" ")
-
-                    const fee = []
-
-                    for (let i = 0; i < (taxes_fees.length-1)/2; i++) {
-
-                        fee.push(taxes_fees[2*i+1])
-
-                        air_taxes.push(
-                            {
-                                "code": taxes_fees[2*i],
-                                "amount": taxes_fees[2*i+1]
-                            }
-                        )
-                        
-                    }
-
-                    return {
-                                air_taxes: air_taxes,
-                                total_air_taxes: taxes_fees[taxes_fees.length-1],
-                                fee: fee,
-                            }
-                })()
-                   
-                const {segment }  = (() => {
-
-                    let m = null
-                    let segment = []
-
-                    const class_cabin = _matcherArray(fileDatas, _regex_class_cabin)
-                    const flight_number = _matcherArray(fileDatas, _regex_flight_number)
-                    const departure_arrival_date = _matcherArray(fileDatas, _regex_departure_arrival_date)
-                    const departure_arrival_time = _matcherArray(fileDatas, _regex_departure_arrival_time)
-                    const departure_arrival_city = _matcherArray(fileDatas, _regex_departure_arrival_city)
-                    const meal = _matcherArray(fileDatas, _regex_meal)
-                    const flying_time = _matcherArray(fileDatas, _regex_flying_time) 
-                    const departure_airport_code = _matcherArray(fileDatas, _regex_departure_airport_code)
-                    const franchise = _matcherArray(fileDatas, _regex_franchise)
-                    const stop_over = _matcherArray(fileDatas, _regex_stop_over)
-                    
-                    for (let index = 0; index < flight_number.length; index++) {
-                        const num = flight_number[index];
-                        
-                        const {departure_terminal, arrival_terminal} = _getTerminal()
-                        segment.push({
-                            "class": class_cabin[index],
-                            "cabin": class_cabin[index],
-                            "departure_date": _GoodFormatDate(departure_arrival_date[2*index]),
-                            "departure_time":departure_arrival_time[2*index]+":"+departure_arrival_time[2*index],
-                            "fare_basis": "",
-                            "leg_price": 0,
-                            "arrival_city": departure_arrival_city[2*index+1],
-                            "arrival_airport_code": departure_airport_code[2*index],
-                            "departure_city": departure_arrival_city[2*index],
-                            "departure_airport_code": departure_airport_code[2*index+1],
-                            "id_airline": flight_number[index].split(" ")[1], // update
-                            "code_share": "",
-                            "arrival_date": _GoodFormatDate(departure_arrival_date[2*index+1]),
-                            "arrival_time": departure_arrival_time[2*index+1]+":"+departure_arrival_time[2*index+1],
-                            "flying_time": flying_time[index],
-                            "mileage": 0,
-                            "equipment": "",
-                            "stopover_city": stop_over[index]||"",
-                            "is_smoking": false,
-                            "meal": meal[index],
-                            "number_stop": stop_over[index]?1:0,
-                            "franchise": +(franchise[index]||0+franchise[index+1]||0)+" kg",
-                            "flight_number": num, /// update
-                            "departure_terminal": departure_terminal,
-                            "arrival_terminal": arrival_terminal,
-                            "status": "Holding Confirmed",
-                            "seat": ""
-                        },)
-                    
-                    }
-
-                    booking_data.airline_iata = flight_number[0].split(" ")[0]
-                    // const taxes_fees_data =   _matcherArray(fileDatas, _regex_total_taxes_fees)
-                    // booking_data.total_taxes_fees = ""
-                    // booking_data.fee = []
-                    // booking_data.air_taxes.push(
-                    //     {
-                    //         "code": taxe_fee[2*i],
-                    //         "amount": taxe_fee[2*i+1]
-                    //     }
-                    // )
-
-                    return {
-                        segment: segment
-                        
-                    }
-
-                })()
-
-               //console.log(data);
+            //console.log(data);
 
 
-                //const flight_number = _matcherArray(fileDatas, _regex_flight_number);
+            //const flight_number = _matcherArray(fileDatas, _regex_flight_number);
 
-                // [booking_data.airline_iata, booking_data.id_airline] = flight_number?.trim().split(" ")
+            // [booking_data.airline_iata, booking_data.id_airline] = flight_number?.trim().split(" ")
 
-                // console.log(booking_data);
+            // console.log(booking_data);
 
             booking_data.segment = segment
             booking_data.arrival_date = segment[segment.length-1]["arrival_date"]
@@ -608,10 +608,8 @@
 
             return booking_data;
 
-            })()
-
-            
+        })()
 
     })()
 
-				}
+}

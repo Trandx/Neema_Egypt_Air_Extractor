@@ -1,4 +1,4 @@
-import fileDatas from "./datas.mjs";
+import fileDatas from "./datas.js";
 
 						/// airbook datas
 
@@ -173,21 +173,7 @@ import fileDatas from "./datas.mjs";
                                     }
                                 }
     
-                                
-                                //const tb_datas = data.match(_first_reg)
-    
                                 return matcher?((matcher.length==1)?matcher[0]:matcher):null
-    
-                                // return tb_datas?.map(val=> {
-                                //     // catch values of datas and code
-                                //     let matcher = val.match(_reg_spec)?.slice(1)
-                                //     console.log(val);
-                                //     console.log(matcher)
-                                //     //matcher.shift()
-    
-                                
-    
-                                // })
                             }
     
                             /// function to extract taxes values and codes
@@ -309,7 +295,7 @@ import fileDatas from "./datas.mjs";
                                             "meal": "",
                                             "number_stop": !isNaN(gp.number_stop)?gp.number_stop:0,
                                             "franchise": "",
-                                            "flight_number": "", /// update
+                                            "flight_number": airline_iata+' '+id_airline, /// update
                                             "departure_terminal": gp?.departure_terminal?.trim()||0,
                                             "arrival_terminal": gp.arrival_terminal.trim(),
                                             "status": "Holding Confirmed",
