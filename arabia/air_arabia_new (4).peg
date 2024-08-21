@@ -602,7 +602,6 @@
 													segment.franchise = ancillary_details[i].go_bagages
 												}
 												
-
 												itinerary += airport_code[1] + ' '
 
 											}else{

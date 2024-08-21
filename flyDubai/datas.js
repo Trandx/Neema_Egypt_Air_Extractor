@@ -1,61 +1,53 @@
-const datas = `                                                                                                                                                                                                                                      Scan this barcode or enter the booking reference for self-service kiosk check-in.
+const datas = `                                                                                                                                                                                                              Scan this barcode or enter the booking reference for self-service kiosk check-in.
 
 
 
-Your booking is confirmed                                                                                                                                                    9VJZLN
-Thank you for booking with us.                                                                                                                         flydubai booking reference
+                 Your booking is confirmed                                                                                                                                                HHLK2O
+     Thank you for booking with us.                                                                                                                          flydubai booking reference
 
-Passenger details
-Ms. Ajeib Alfuad
-Primary Adult
-
-
+     Passenger details
+     Mr. Ananth Sai Roop Sagar Badeti
+     Primary Adult
 
 
-                                                                                                                                                                      All times are local
-
-Departure from Kyiv (kiev) (Flight FZ 1728)
-
-15 October 2021, Friday                                                     15 October 2021, Friday                              Economy Value
 
 
-15:10                                                                                           21:45
-                                                                                                                             7 kg hand baggage (included)
-                    - - - - - - - - - 05h 35min - - - - - - - - -
-                                      Non-stop                                                                               20 kg checked baggage (included)
+                                                                                                                                                                                        All times are local
 
-KBP                                                                                                      DXB                             Standard meal (included)
+                 Departure from Hyderabad (Flight FZ 440/FZ 1705)
 
-Boryspil Airport                                                     Dubai International Airport                                         Unassigned
+     08 November 2021, Monday                                              08 November 2021, Monday
 
-Terminal D                                                                           Terminal 3                                          Buy on board, if available
+     10:20                            - - - - - - - - - 04h 15min - - - - - - - - -                          13:05
+                                                                                                                                       Economy Value
+     HYD                                                                                                           DXB
+                                                                                                                                               7 kg hand baggage (included)
+     Hyderabad Airport                                                         Dubai International Airport
+                                                                                               Terminal 2                                      30 kg checked baggage (included)
 
+                                                                                                                                               FZ 440 Standard meal (included)
+                                          Stopover in Dubai (DXB) | 08h 25min                                                                  FZ 1705 Standard meal (included)
+
+                                                                                                                                               FZ 440 Unassigned
+     08 November 2021, Monday                                              09 November 2021, Tuesday
+                                                                                                                    +1 day                     FZ 1705 Unassigned
+
+     21:30                            - - - - - - - - - 04h 45min - - - - - - - - -                          04:15                             FZ 440 Buy on board, if available
+
+     DXB                                                                                                          NQZ                          FZ 1705 Buy on board, if available
+
+     Dubai International Airport                                               Nur-sultan (astana) Airport
+     Terminal 3
  
-
-Return from Dubai (Flight FZ 1727)
-
-22 January 2022, Saturday                                               22 January 2022, Saturday                                Economy Value
-
-
-09:20                                                                                           13:20
-                                                                                                                             7 kg hand baggage (included)
-                    - - - - - - - - - 06h 00min - - - - - - - - -
-                                      Non-stop                                                                               20 kg checked baggage (included)
-
-DXB                                                                                                       KBP                            Standard meal (included)
-
-Dubai International Airport                                                          Boryspil Airport                                    Unassigned
-
-Terminal 3                                                                               Terminal D                                      Buy on board, if available
-
- 
-Passenger total                                                         USD 334.10     Payment reference 53112633                                                           Administration fee USD 10.02
-                                                                          Booked on 12 October 2021                                                               Booking total USD 344.12
-Fare total                                                               USD 334.10
-Base fare                                                                USD 281.00    Card number:  ************3576                                                                         AED 1,289.32
-                                                                          Ajeib Alfuad 12 October 2021                                                               Equivalent to USD 344.12
-Taxes/fees YK USD 13.00 ; UD USD 2.00 ; UA USD 4.00 ; ZR USD 2.80 ;       USD 53.10
-TP USD 1.40 ; F6 USD 9.50 ; AE USD 20.40                                               Please note, that the credit/debit card used to make the payment will be checked at the airport.
+    Passenger total                                                       INR 30,584.00     Payment reference 53290249                                                           Administration fee INR 917.52
+                                                                                            Booked on 20 October 2021                                                           Booking total INR 31,501.52
+    Fare total                                                              INR 30,584.00
+    Base fare                                                               INR 26,880.00   Card number:  ************2742                                                                      INR 31,501.52
+                                                                                            Ananth Sai Roop Sagar Badeti 20 October
+    Taxes/fees IN INR 464.00 ; ZR INR 110.00 ; K3 INR 1,340.00 ; F6 INR      INR 3,704.00
+                                                                                            2021
+    720.00 ; P2 INR 1,070.00
+                                                                                            Please note, that the credit/debit card used to make the payment will be checked at the airport.
 
 
 
