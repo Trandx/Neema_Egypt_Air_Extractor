@@ -1,8 +1,74 @@
-import fileDatas from "./datas.js";
+//Name: Fly Dubai
+//Key: /Fly_Dubai/
+//Date:27/08/2024
 
-/// airbook datas
+//********globals functions********************
+{
+    var toObject = function (KEY,tab){
 
-(function() {
+        var v={};
+
+        if (tab && tab.forEach){
+            tab.forEach(function(t){
+                if(t && typeof t =='object'){
+                    for (prop in t) v[prop]=t[prop];
+                }
+            });
+        }
+        var ret={}
+
+        ret[KEY]=v
+
+        return  ret;
+    }
+}
+//
+
+//**********************************
+
+START= HEADER_VALUE
+
+//*********** globals
+TEXT=.*
+cr = "\n"
+delim1 = "This document is automatically generated."
+delim2 = "Please do not respond to this mail."
+delim3 = (" FROM " / " DE ")
+delim4 = ("/TO        " / "/À           ")
+delim5 = (" AT CHECK-IN, PLEASE SHOW A PICTURE IDENTIFICATION AND THE DOCUMENT YOU GAVE"/ " A L'ENREGISTREMENT, VOUS DEVREZ PRESENTER UNE PIECE D'IDENTITE AVEC")
+delim6 = (" FOR REFERENCE AT RESERVATION TIME" / " PHOTOGRAPHIE, ET LE DOCUMENT DONT VOUS AVEZ DONNE LA REFERENCE A LA")
+delim7 = ("FLIGHT(S) CALCULATED AVERAGE CO2 EMISSIONS IS 1435.71 KG/PERSON" / "L'ÉMISSION CO2 MOYENNE CALCULÉE EST")
+delim8 = "SOURCE :"
+delim9= "\f"
+
+/*******************************************/
+
+//HEADER Block
+
+HEADER_VALUE = val:TEXT {
+    val = val.join("");
+    let is_html = val.match(/<html>/img);
+    if(is_html){
+        // Convert HTML to TEXT
+        val = val.replace(/<tr>/g,'<br>');
+        val = val.replace(/<br>\s?/g,'\r');
+        val = val.replace(/<\/?b>/g,'*');
+        val = val.replace(/<\/font>/g,' ');
+        val = val.replace(/&gt;/g,'');
+        val = val.replace(/&lt;/g,'');
+        val = val.replace(/&nbsp;/g,' ');
+        val = val.replace(/#.*\n\n/g,'');
+        val = val.replace(/<[^>]+>/g,'');
+        val = val.replace(/^\s+([\w\*])/gm,'$1');
+        val = val.replace(/(\w)\s+$/gm,'$1');
+        val = val.replace(/\r\r\r/g,'');
+    }
+
+    fileDatas = val
+
+    /// airbook datas
+
+    return (function() {
 
     const booking_data_init = {
         "source": "email",
@@ -605,3 +671,5 @@ import fileDatas from "./datas.js";
     return airbook_data
 
 })()
+
+}
