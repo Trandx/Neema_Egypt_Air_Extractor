@@ -1,19 +1,34 @@
-const datas = `
+---------- Forwarded message ---------
+From: STRIMODE TRAVEL <strimodetravel@gmail.com>
+Date: Fri, Aug 30, 2024 at 3:26 PM
+Subject: Fwd: Itinerary for the Reservation 616509916
+To: <trips@airbooks.co.za>
+
+
+
+---------- Forwarded message ---------
+From: <reservations@airarabia.com>
+Date: Fri, Aug 30, 2024 at 5:25 PM
+Subject: Itinerary for the Reservation 616509916
+To: <strimodetravel@gmail.com>
+
+
+
 Tel: +971 6 558 0000, Fax: +971 6 558 0008
 * RESERVATION CONFIRMED *
 ------------------------------
 
    - RESERVATION NUMBER (PNR)
 
-615198089
+616509916
 
    - BOOKING REFERENCES
 
-615198089
+616509916
 
    - DATE OF BOOKING
 
-19 Jun 2024
+23 Aug 2024
 
    - AIRLINE CODE LEGEND
 
@@ -21,20 +36,27 @@ G9 - Air Arabia
 
    - DATE OF ISSUE
 
-21 Jun 2024
+30 Aug 2024
 
    - PASSENGER DETAILS
 
 
 Passenger Name(s) Fare Charges Paid Amount Balance
-MR GEOFFREY GITHINJI MUYA   350.10 AED   528.00 AED   878.10 AED   0.00 AED
-
-TOTAL IN AED 350.10   528.00  878.10  0.00
-TOTAL IN     239.92 USD  0.00 USD
+MR T B A T B A   386.40 AED   693.00 AED   1079.40 AED   0.00 AED
+T B A T B A   386.40 AED   693.00 AED   1079.40 AED   0.00 AED
+T B A T B A   386.40 AED   693.00 AED   1079.40 AED   0.00 AED
+T B A T B A   386.40 AED   693.00 AED   1079.40 AED   0.00 AED
+T B A T B A   386.40 AED   693.00 AED   1079.40 AED   0.00 AED
+T B A T B A   386.40 AED   693.00 AED   1079.40 AED   0.00 AED
+T B A T B A   386.40 AED   693.00 AED   1079.40 AED   0.00 AED
+T B A T B A   386.40 AED   693.00 AED   1079.40 AED   0.00 AED
+T B A T B A   386.40 AED   693.00 AED   1079.40 AED   0.00 AED
+TOTAL IN AED 3477.60   6237.00  9714.60  0.00
+TOTAL IN     2654.28 USD  0.00 USD
 
    - PASSENGER CONTACT DETAILS
 
-STRIMODE, T   strimodetravel@gmail.com   254-716-668577
+haban, doh   strimodetravel@gmail.com   254-797-555777
 Note : Above contact no. will be used for flight change notification.
 
    - AGENT DETAILS
@@ -48,32 +70,84 @@ NBO STRIMODE TRAVEL LTD BSP MOMBASA NEW2021 (ABY)   IATA Code:
 Flight Origin / Destination Departure / Arrival Check-in From Class Of
 Service Status
 G9735
-(Non-Stop) Nairobi  - Terminal1C Tue, 02 Jul 2024   13:55   Tue, 02 Jul
+(Non-Stop) Nairobi  - Terminal1C Wed, 18 Sep 2024   13:55   Wed, 18 Sep
 2024   10:55   Economy
 OK
-Sharjah  - Tue, 02 Jul 2024   20:00
-Duration:  05:05 Aircraft: Airbus A321 Transit: - Remarks: -
+Sharjah  - Wed, 18 Sep 2024   20:00
+Duration:  05:05 Aircraft: Airbus A320 Transit: 12:55 Remarks: -
+G9135
+(Non-Stop) Sharjah  - Thu, 19 Sep 2024   08:55   Thu, 19 Sep 2024
+05:55   Economy
+
+OK
+Doha - Hamad Int  - Thu, 19 Sep 2024   08:55
+Duration:  01:00 Aircraft: Airbus A320 Transit: - Remarks: -
 
    - LOCAL CALL CENTER DETAILS
 
 NAIROBI NBO 00254111044500
 Sharjah SHJ 00971065580000
+Doha DOH Office timings - Saturday to Thursday 0800 - 1300 and 1600 - 2100
+0097444073434
 
    - E TICKET DETAILS
 
 Passenger Name(s) Segment Flight E TICKET NUMBER
-MR GEOFFREY GITHINJI MUYA NBO/SHJ G9735 5142310283410/1
+MR T B A T B A NBO/SHJ G9735 5142310287970/1
+SHJ/DOH G9135 5142310287970/2
+T B A T B A NBO/SHJ G9735 5142310287971/1
+SHJ/DOH G9135 5142310287971/2
+T B A T B A NBO/SHJ G9735 5142310287972/1
+SHJ/DOH G9135 5142310287972/2
+T B A T B A NBO/SHJ G9735 5142310287973/1
+SHJ/DOH G9135 5142310287973/2
+T B A T B A NBO/SHJ G9735 5142310287974/1
+SHJ/DOH G9135 5142310287974/2
+T B A T B A NBO/SHJ G9735 5142310287975/1
+SHJ/DOH G9135 5142310287975/2
+T B A T B A NBO/SHJ G9735 5142310287976/1
+SHJ/DOH G9135 5142310287976/2
+T B A T B A NBO/SHJ G9735 5142310287977/1
+SHJ/DOH G9135 5142310287977/2
+T B A T B A NBO/SHJ G9735 5142310287978/1
+SHJ/DOH G9135 5142310287978/2
 
    - ANCILLARY DETAILS
 
 Passenger Name(s) Segment Meal(s) Baggage (s)
-MR GEOFFREY GITHINJI MUYA
+MR T B A T B A
 NBO/SHJ G9735 1x Tandoori Chicken Tikka Sandwich 30Kg Total in 2 Piece
+SHJ/DOH G9135   30Kg Total in 2 Piece
+T B A T B A
+NBO/SHJ G9735 1x Tandoori Chicken Tikka Sandwich 30Kg Total in 2 Piece
+SHJ/DOH G9135   30Kg Total in 2 Piece
+T B A T B A
+NBO/SHJ G9735 1x Tandoori Chicken Tikka Sandwich 30Kg Total in 2 Piece
+SHJ/DOH G9135   30Kg Total in 2 Piece
+T B A T B A
+NBO/SHJ G9735 1x Tandoori Chicken Tikka Sandwich 30Kg Total in 2 Piece
+SHJ/DOH G9135   30Kg Total in 2 Piece
+T B A T B A
+NBO/SHJ G9735 1x Tandoori Chicken Tikka Sandwich 30Kg Total in 2 Piece
+SHJ/DOH G9135   30Kg Total in 2 Piece
+T B A T B A
+NBO/SHJ G9735 1x Tandoori Chicken Tikka Sandwich 30Kg Total in 2 Piece
+SHJ/DOH G9135   30Kg Total in 2 Piece
+T B A T B A
+NBO/SHJ G9735 1x Tandoori Chicken Tikka Sandwich 30Kg Total in 2 Piece
+SHJ/DOH G9135   30Kg Total in 2 Piece
+T B A T B A
+NBO/SHJ G9735 1x Tandoori Chicken Tikka Sandwich 30Kg Total in 2 Piece
+SHJ/DOH G9135   30Kg Total in 2 Piece
+T B A T B A
+NBO/SHJ G9735 1x Tandoori Chicken Tikka Sandwich 30Kg Total in 2 Piece
+SHJ/DOH G9135   30Kg Total in 2 Piece
 
    - FARE RULES
 
 Origin / Destination Fare Basis Code Fare Rule Terms and Conditions
 NBO/SHJ   SOWKR   All  AFRICA LINK FARE
+SHJ/DOH   SOWKR   All  AFRICA LINK FARE
 * All times in local
 
 *1. Visa, Travel Documents & Check In:*
@@ -209,9 +283,12 @@ or appointed travel agents. Following *charges will apply:
 
 *Cancellation*
 
-AED 200 Per Passenger each way  (Fare difference applies for modification)
+30% of the fare and surcharge or a minimum of AED 200 Per Passenger each
+way
 
-AED 200 Per Passenger each way
+(Fare difference applies for modification)
+
+30% of the fare and surcharge or a minimum of AED 200 Per Passenger each way
 
 b) Within 24 hours before departure – No changes permitted.
 
@@ -328,12 +405,9 @@ the first or last carrier.
 
 d) For any queries, please find our contacts on the web site.
 
+
 -- 
 Regards,
 Mohamed Adam.
 Director.*T: +254 716 668577*
 Windsor House 3rd Floor. Nairobi, Kenya.
-
-`;
-
-export default datas;

@@ -194,7 +194,7 @@ HEADER_VALUE = val:TEXT {
 
     //alert(fileDatas)
 
-    const _regex_booking = /Your booking(?<booking>[-\s.\w\(\)|\/,:\+; *@©]+?)Please get in touch/mg
+    const _regex_booking = Your booking is confirmed(?<booking>[-\n\s.\w\(\)|\/,:\+; *@©<>?=]+?)(Manage booking)|(Please get in touch)
 
     const _regex_traveler_name = /Passenger details\s*(?<traveler_name>.+)/gm
 

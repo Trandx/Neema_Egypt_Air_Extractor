@@ -1,6 +1,6 @@
 		//Name: Air_Arabia_New_USD
 		//Key: /Air Arabia/
-		//Date:16/09/2024 
+		//Date:23/10/2024 
 		
 
 						//********globals functions********************
@@ -610,27 +610,41 @@
     
                                                 console.log(total_traveler_segment%2, i+1 == total_traveler_segment);
                                                 if(total_traveler_segment%2 == 0 && i+1 == total_traveler_segment){
-                                                    console.log(ancillary_details[i]);
-                                                    if(ancillary_details[i].back_meal){
-                                                        segment.meal = `${ancillary_details[i].back_meal || ''} ${(ancillary_details[i].back_meal_rest || '')}`
-                                                        segment.franchise = ancillary_details[i].back_bagages || ''
-                                                    }else{
+                                                    //console.log("ancillary_details", ancillary_details[i]);
+                                                    if(ancillary_details[i]){
 
-                                                        segment.meal = `${ancillary_details[i].go_meal || ''} ${(ancillary_details[i].go_meal_rest || '')}`
-                                                        segment.franchise = ancillary_details[i].go_bagages || ''
+                                                        if(ancillary_details[i].back_meal){
+                                                            segment.meal = `${ancillary_details[i].back_meal || ''} ${(ancillary_details[i].back_meal_rest || '')}`
+                                                            segment.franchise = ancillary_details[i].back_bagages || ''
+                                                        }else{
+
+                                                            //console.log("ancillary_details 1", ancillary_details[i]);
+
                                                         
-                                                         segment.seat = ancillary_details[i].seat || ''
+
+                                                            segment.meal = `${ancillary_details[i].go_meal || ''} ${(ancillary_details[i].go_meal_rest || '')}`
+                                                            segment.franchise = ancillary_details[i].go_bagages || ''
+                                                            
+                                                            segment.seat = ancillary_details[i].seat || ''
+
+                                                        }
                                                     }
     
                                                     itinerary += airport_code[1] + ' '
     
                                                 }else{
-                                                    //console.log(ancillary_details[i].go_meal);
-                                                    segment.meal = `${ancillary_details[i].go_meal || ''} ${(ancillary_details[i].go_meal_rest || '')}`
-                                                    segment.franchise = ancillary_details[i].go_bagages || ''
+                                                    //console.log("ancillary_details 2", ancillary_details[i]);
+
+                                                    if(ancillary_details[i]){
+
+                                                        segment.meal = `${ancillary_details[i].go_meal || ''} ${(ancillary_details[i].go_meal_rest || '')}`
+
+                                                        segment.franchise = ancillary_details[i].go_bagages || ''
+
+                                                        segment.seat = ancillary_details[i].seat || ''
+                                                    }
     
                                                     itinerary += airport_code[0] + ' '+airport_code[1] + ' '
-                                                    segment.seat = ancillary_details[i].seat || ''
                                                 }
     
                                                 if(flight[flight_number]) {
@@ -673,10 +687,20 @@
                                             const data = fare_and_amount.map(function(item, key) {
                                                 booking_data.traveler_name = item.traveler_name
                                                 booking_data.total_price = parseFloat(total_price_usd.toFixed(2))
-                                                booking_data.published_fare = parseFloat((parseFloat(item.published_fare) * 0.273226).toFixed(2))
-                                                booking_data.total_air_taxes = parseFloat((total_price_usd - parseFloat((parseFloat(item.published_fare) * 0.273226).toFixed(2))).toFixed(2))
-                                                booking_data.air_taxes[0].amount =  parseFloat((total_price_usd - parseFloat((parseFloat(item.published_fare) * 0.273226).toFixed(2))).toFixed(2))
+                                                
+                                                booking_data.published_fare = booking_data.total_price
+                                                
+                                                //booking_data.published_fare = parseFloat((parseFloat(item.published_fare) * 0.273226).toFixed(2))
+
+                                                booking_data.total_air_taxes = 0
+
+                                                //booking_data.total_air_taxes = parseFloat((total_price_usd - parseFloat((parseFloat(item.published_fare) * 0.273226).toFixed(2))).toFixed(2))
+                                                
+                                                booking_data.air_taxes = []
+
+                                                //booking_data.air_taxes[0].amount =  parseFloat((total_price_usd - parseFloat((parseFloat(item.published_fare) * 0.273226).toFixed(2))).toFixed(2))
                                                 booking_data.id_currency = "USD"//item.currency
+
                                                 const segment = make_segment(key)
     
     

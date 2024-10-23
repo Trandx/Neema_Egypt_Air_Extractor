@@ -1,19 +1,35 @@
-const datas = `
+---------- Forwarded message ---------
+From: STRIMODE TRAVEL <strimodetravel@gmail.com>
+Date: Wed, Oct 9, 2024 at 3:52 PM
+Subject: Fwd: Itinerary for the Reservation 617515966
+To: <trips@airbooks.co.za>
+
+
+
+
+---------- Forwarded message ---------
+From: <reservations@airarabia.com>
+Date: Wed, Oct 9, 2024 at 5:52 PM
+Subject: Itinerary for the Reservation 617515966
+To: <strimodetravel@gmail.com>
+
+
+
 Tel: +971 6 558 0000, Fax: +971 6 558 0008
 * RESERVATION CONFIRMED *
 ------------------------------
 
    - RESERVATION NUMBER (PNR)
 
-615198089
+617515966
 
    - BOOKING REFERENCES
 
-615198089
+617515966
 
    - DATE OF BOOKING
 
-19 Jun 2024
+09 Oct 2024
 
    - AIRLINE CODE LEGEND
 
@@ -21,20 +37,19 @@ G9 - Air Arabia
 
    - DATE OF ISSUE
 
-21 Jun 2024
+09 Oct 2024
 
    - PASSENGER DETAILS
 
 
 Passenger Name(s) Fare Charges Paid Amount Balance
-MR GEOFFREY GITHINJI MUYA   350.10 AED   528.00 AED   878.10 AED   0.00 AED
-
-TOTAL IN AED 350.10   528.00  878.10  0.00
-TOTAL IN     239.92 USD  0.00 USD
+MR JULIUS KYALO MUTUKU   496.50 AED   530.00 AED   1026.50 AED   0.00 AED
+TOTAL IN AED 496.50   530.00  1026.50  0.00
+TOTAL IN     280.47 USD  0.00 USD
 
    - PASSENGER CONTACT DETAILS
 
-STRIMODE, T   strimodetravel@gmail.com   254-716-668577
+Strimode, Travel   strimodetravel@gmail.com   254-721-365795
 Note : Above contact no. will be used for flight change notification.
 
    - AGENT DETAILS
@@ -48,32 +63,32 @@ NBO STRIMODE TRAVEL LTD BSP MOMBASA NEW2021 (ABY)   IATA Code:
 Flight Origin / Destination Departure / Arrival Check-in From Class Of
 Service Status
 G9735
-(Non-Stop) Nairobi  - Terminal1C Tue, 02 Jul 2024   13:55   Tue, 02 Jul
+(Non-Stop) Nairobi  - Terminal1C Thu, 17 Oct 2024   13:55   Thu, 17 Oct
 2024   10:55   Economy
 OK
-Sharjah  - Tue, 02 Jul 2024   20:00
+Sharjah  - Thu, 17 Oct 2024   20:00
 Duration:  05:05 Aircraft: Airbus A321 Transit: - Remarks: -
 
    - LOCAL CALL CENTER DETAILS
 
 NAIROBI NBO 00254111044500
-Sharjah SHJ 00971065580000
+Sharjah SHJ 00971600508001
 
    - E TICKET DETAILS
 
 Passenger Name(s) Segment Flight E TICKET NUMBER
-MR GEOFFREY GITHINJI MUYA NBO/SHJ G9735 5142310283410/1
+MR JULIUS KYALO MUTUKU NBO/SHJ G9735 5142310291115/1
 
    - ANCILLARY DETAILS
 
 Passenger Name(s) Segment Meal(s) Baggage (s)
-MR GEOFFREY GITHINJI MUYA
-NBO/SHJ G9735 1x Tandoori Chicken Tikka Sandwich 30Kg Total in 2 Piece
+MR JULIUS KYALO MUTUKU
+NBO/SHJ G9735 1x Chicken Mayo Sandwich 30Kg Total in 2 Piece
 
    - FARE RULES
 
 Origin / Destination Fare Basis Code Fare Rule Terms and Conditions
-NBO/SHJ   SOWKR   All  AFRICA LINK FARE
+NBO/SHJ   SOWKR   All  CHIBUNE HOLDINGS
 * All times in local
 
 *1. Visa, Travel Documents & Check In:*
@@ -209,9 +224,12 @@ or appointed travel agents. Following *charges will apply:
 
 *Cancellation*
 
-AED 200 Per Passenger each way  (Fare difference applies for modification)
+30% of the fare and surcharge or a minimum of AED 200 Per Passenger each
+way
 
-AED 200 Per Passenger each way
+(Fare difference applies for modification)
+
+30% of the fare and surcharge or a minimum of AED 200 Per Passenger each way
 
 b) Within 24 hours before departure – No changes permitted.
 
@@ -328,12 +346,9 @@ the first or last carrier.
 
 d) For any queries, please find our contacts on the web site.
 
+
 -- 
 Regards,
 Mohamed Adam.
 Director.*T: +254 716 668577*
 Windsor House 3rd Floor. Nairobi, Kenya.
-
-`;
-
-export default datas;

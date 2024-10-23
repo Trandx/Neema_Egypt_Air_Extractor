@@ -1,19 +1,35 @@
-const datas = `
+---------- Forwarded message ---------
+From: STRIMODE TRAVEL <strimodetravel@gmail.com>
+Date: Mon, Sep 16, 2024 at 4:24 PM
+Subject: Fwd: Itinerary for the Reservation 616985443
+To: <trips@airbooks.co.za>
+
+
+
+
+---------- Forwarded message ---------
+From: <reservations@airarabia.com>
+Date: Mon, Sep 16, 2024 at 6:22 PM
+Subject: Itinerary for the Reservation 616985443
+To: <strimodetravel@gmail.com>
+
+
+
 Tel: +971 6 558 0000, Fax: +971 6 558 0008
 * RESERVATION CONFIRMED *
 ------------------------------
 
    - RESERVATION NUMBER (PNR)
 
-615198089
+616985443
 
    - BOOKING REFERENCES
 
-615198089
+616985443
 
    - DATE OF BOOKING
 
-19 Jun 2024
+16 Sep 2024
 
    - AIRLINE CODE LEGEND
 
@@ -21,20 +37,20 @@ G9 - Air Arabia
 
    - DATE OF ISSUE
 
-21 Jun 2024
+16 Sep 2024
 
    - PASSENGER DETAILS
 
 
 Passenger Name(s) Fare Charges Paid Amount Balance
-MR GEOFFREY GITHINJI MUYA   350.10 AED   528.00 AED   878.10 AED   0.00 AED
-
-TOTAL IN AED 350.10   528.00  878.10  0.00
-TOTAL IN     239.92 USD  0.00 USD
+MS JACQUILINE NYAWIRA IRERI   200.00 AED   668.00 AED   868.00 AED   0.00
+AED
+TOTAL IN AED 200.00   668.00  868.00  0.00
+TOTAL IN     237.16 USD  0.00 USD
 
    - PASSENGER CONTACT DETAILS
 
-STRIMODE, T   strimodetravel@gmail.com   254-716-668577
+Strimode, Travel   strimodetravel@gmail.com   254-716-668577
 Note : Above contact no. will be used for flight change notification.
 
    - AGENT DETAILS
@@ -47,33 +63,59 @@ NBO STRIMODE TRAVEL LTD BSP MOMBASA NEW2021 (ABY)   IATA Code:
 
 Flight Origin / Destination Departure / Arrival Check-in From Class Of
 Service Status
-G9735
-(Non-Stop) Nairobi  - Terminal1C Tue, 02 Jul 2024   13:55   Tue, 02 Jul
-2024   10:55   Economy
+G9168
+(Non-Stop) Dammam  - Terminal Wed, 18 Sep 2024   20:05   Wed, 18 Sep
+2024   17:05
+  Economy
 OK
-Sharjah  - Tue, 02 Jul 2024   20:00
+Sharjah  - Wed, 18 Sep 2024   22:20
+Duration:  01:15 Aircraft: Airbus A320 Transit: 10:40 Remarks: -
+G9734
+(Non-Stop) Sharjah  - Thu, 19 Sep 2024   09:00   Thu, 19 Sep 2024
+06:00   Economy
+
+OK
+Nairobi  - Terminal1C Thu, 19 Sep 2024   13:05
 Duration:  05:05 Aircraft: Airbus A321 Transit: - Remarks: -
 
    - LOCAL CALL CENTER DETAILS
 
-NAIROBI NBO 00254111044500
+Dammam DMM
 Sharjah SHJ 00971065580000
+NAIROBI NBO 00254111044500
 
    - E TICKET DETAILS
 
 Passenger Name(s) Segment Flight E TICKET NUMBER
-MR GEOFFREY GITHINJI MUYA NBO/SHJ G9735 5142310283410/1
+MS JACQUILINE NYAWIRA IRERI DMM/SHJ G9168 5142366518685/1
+SHJ/NBO G9734 5142366518685/2
 
    - ANCILLARY DETAILS
 
-Passenger Name(s) Segment Meal(s) Baggage (s)
-MR GEOFFREY GITHINJI MUYA
-NBO/SHJ G9735 1x Tandoori Chicken Tikka Sandwich 30Kg Total in 2 Piece
+Passenger Name(s) Segment Seat Meal(s) Baggage (s)
+MS JACQUILINE NYAWIRA IRERI
+DMM/SHJ G9168 19E   1x Halloumi Cheese Sandwich 20 Kg 1 Piece Free
+SHJ/NBO G9734 21E   1x Tandoori Chicken Tikka Sandwich 20 Kg 1 Piece Free
 
    - FARE RULES
 
 Origin / Destination Fare Basis Code Fare Rule Terms and Conditions
-NBO/SHJ   SOWKR   All  AFRICA LINK FARE
+DMM/SHJ   SOWKR   All  New Fare Structure OW
+SHJ/NBO   SOWKR   All  New Fare Structure OW
+
+   - FLEXI RULES
+
+Origin / Destination Flexibility Category Benefits
+Dammam / Sharjah     Flexibility
+
+   - Modification Free up to 24 hrs of departure.
+   - Cancellation AED 100.0 up to 24 hrs of departure.
+
+Sharjah / Nairobi     Flexibility
+
+   - Modification Free up to 24 hrs of departure.
+   - Cancellation AED 100.0 up to 24 hrs of departure.
+
 * All times in local
 
 *1. Visa, Travel Documents & Check In:*
@@ -209,9 +251,12 @@ or appointed travel agents. Following *charges will apply:
 
 *Cancellation*
 
-AED 200 Per Passenger each way  (Fare difference applies for modification)
+30% of the fare and surcharge or a minimum of AED 200 Per Passenger each
+way
 
-AED 200 Per Passenger each way
+(Fare difference applies for modification)
+
+30% of the fare and surcharge or a minimum of AED 200 Per Passenger each way
 
 b) Within 24 hours before departure – No changes permitted.
 
@@ -328,12 +373,9 @@ the first or last carrier.
 
 d) For any queries, please find our contacts on the web site.
 
+
 -- 
 Regards,
 Mohamed Adam.
 Director.*T: +254 716 668577*
 Windsor House 3rd Floor. Nairobi, Kenya.
-
-`;
-
-export default datas;
